@@ -1,0 +1,30 @@
+.Chat .Body .Container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.Chat .Body .MyMessage {
+    justify-content: end;
+}
+
+.Chat .Body .OtherMessage {
+    justify-content: start;
+}
+
+.Chat .Body .Message{
+    margin: 10px;
+    padding: 12px 24px;
+    width:fit-content;
+    max-width: 50%;
+}
+
+.Chat .Body .MyMessage .Message{
+    background-color: rgb(121, 146, 255);
+    border-radius: 8px 8px 0px 8px;
+}
+
+.Chat .Body .OtherMessage .Message{
+    background-color: rgb(209, 83, 104);
+    border-radius: 8px 8px 8px 0px;
+}

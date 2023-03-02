@@ -1,0 +1,6 @@
+.Chat {
+    display: flex;
+    flex-direction: column;
+    background-color:   rgb(170, 170, 170);
+    flex: 1;
+}
