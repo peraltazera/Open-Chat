@@ -1,4 +1,21 @@
 .Chat .Footer {
     background-color: rgb(56, 56, 56);
     height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px red;
+}
+
+.boxsizingBorder {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+.Chat .Footer textarea {
+    width: 98%;
+    background-color: rgb(201, 201, 201);
+    resize: none;
+    padding: 8px;
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Aside.css'
 import Header from './Header'
-import Body from './Body'
+import Body from './body/Body'
 import Footer from './Footer'
 
 function Aside() {

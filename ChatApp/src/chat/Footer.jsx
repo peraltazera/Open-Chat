@@ -4,7 +4,9 @@ import './Footer.css'
 function Footer() {
   return (
     <div className="Footer">
-        <p>Footer Chat</p>
+        <form>
+          <textarea name="postContent" rows={1} cols={500} />
+        </form>
     </div>
   )
 }
