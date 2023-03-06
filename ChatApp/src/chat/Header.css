@@ -1,4 +1,32 @@
 .Chat .Header {
-    background-color: rgb(56, 56, 56);
-    height: 100px;
+    background-color: #212329;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 32px;
+    border-left: solid 2px #1b1c23;
+    border-right: solid 2px #1b1c23;
+    justify-content: space-between;
+}
+
+.Chat .Header span {
+    display: flex;
+    align-items: center;
+}
+
+.Chat .Header .Info {
+    cursor: pointer;
+    width: 90%;
+    height: 80px;
+}
+
+.Chat .Header img {
+    height: 50px;
+    border-radius: 100px;
+}
+
+.Chat .Header h1 {
+    color: white;
+    padding: 0px 24px;
+    font-size: 18px;
 }

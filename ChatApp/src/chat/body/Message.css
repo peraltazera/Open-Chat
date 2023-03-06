@@ -1,30 +1,83 @@
-.Chat .Body .Container{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
 .Chat .Body .MyMessage {
+    display: flex;
+    width: 100%;
+    flex-direction: row-reverse;
     justify-content: end;
+    padding: 10px 0px;
 }
 
 .Chat .Body .OtherMessage {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
     justify-content: start;
 }
 
-.Chat .Body .Message{
-    margin: 10px;
-    padding: 12px 24px;
-    width:fit-content;
+.Chat .Body .ContainerMessage{
+    display: flex;
+    flex-direction: column;
     max-width: 50%;
 }
 
+.Chat .Body .MyMessage .ContainerMessage{
+    align-items: end;
+}
+
+.Chat .Body .OtherMessage .ContainerMessage{
+    align-items: start;
+}
+
+.Chat .Body .Message{
+    color:white;
+    margin: 10px;
+    padding: 12px 24px;
+    width:fit-content;
+    max-width: 100%;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.Chat .Body .Message p{
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .Chat .Body .MyMessage .Message{
-    background-color: rgb(121, 146, 255);
-    border-radius: 8px 8px 0px 8px;
+    background-color: #296eff;
+    border-radius: 12px 0px 12px 12px;
 }
 
 .Chat .Body .OtherMessage .Message{
-    background-color: rgb(209, 83, 104);
-    border-radius: 8px 8px 8px 0px;
+    background-color: #1e1f25;
+    border-radius: 0px 12px 12px 12px;
 }
+
+.Chat .Body img {
+    height: 40px;
+    border-radius: 100px;
+}
+
+.Chat .Body .Info{
+    color:white;
+    padding: 0px 12px;
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    font-size: 16px;
+}
+
+.Chat .Body .Info .Date{
+    color:rgb(156, 156, 156);
+    font-size: 12px;
+    padding: 0px 10px;
+    font-weight: 300;
+}
+
+.Chat .Body .MyMessage .Info{
+    flex-direction: row-reverse;
+}
+
+.Chat .Body .OtherMessage .Info{
+    flex-direction: row;
+}
+

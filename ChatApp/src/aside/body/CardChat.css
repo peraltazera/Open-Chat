@@ -1,6 +1,52 @@
 .Aside .Body .CardChat {
     height: 80px;
-    background-color: antiquewhite;
-    margin: 10px;
+    padding: 46px 20px;
+    margin: 8px 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
     border-radius: 8px;
+    border: none;
+}
+
+.Aside .Body .CardChat:hover {
+    background-color: rgb(255, 255, 255,0.1);
+    cursor: pointer;
+}
+
+.Aside .Body .CardChat .Info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 6px;
+    padding: 0px 14px;
+}
+
+.Aside .Body .CardChat .Info .Top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Aside .Body .CardChat .Info .Bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Aside .Body .CardChat img {
+    height: 60px;
+    border-radius: 100px;
+}
+
+.Aside .Body .CardChat .Number {
+    width: 20px;
+    text-align: center;
+    background-color: #be4c50;
+    border-radius: 100px;
+}
+
+.Aside .Body .CardChat .Date {
+    color:rgb(156, 156, 156);
 }

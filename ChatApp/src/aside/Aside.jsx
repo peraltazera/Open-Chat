@@ -9,7 +9,7 @@ function Aside() {
     <div className="Aside">
       <Header />
       <Body />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

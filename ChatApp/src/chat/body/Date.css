@@ -1,0 +1,21 @@
+.Chat .Body .Date {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    color: rgb(80, 80, 80);
+    padding: 30px 0px;
+}
+
+.Chat .Body .Line {
+    border-bottom: 1px solid rgb(44, 44, 44);
+    flex: 1;
+}
+
+.Chat .Body .Date p {
+    padding: 0px 12px;
+}
+
+
+
+
