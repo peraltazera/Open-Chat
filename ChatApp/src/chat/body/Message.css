@@ -16,6 +16,7 @@
 .Chat .Body .ContainerMessage{
     display: flex;
     flex-direction: column;
+    width: 50%;
     max-width: 50%;
 }
 
@@ -64,6 +65,7 @@
     align-items: center;
     gap: 0px;
     font-size: 16px;
+    width: 100%;
 }
 
 .Chat .Body .Info .Date{
@@ -71,6 +73,11 @@
     font-size: 12px;
     padding: 0px 10px;
     font-weight: 300;
+    width: fit-content;
+}
+
+.Chat .Body .Info .Name{
+    width: fit-content;
 }
 
 .Chat .Body .MyMessage .Info{

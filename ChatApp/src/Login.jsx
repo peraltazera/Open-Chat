@@ -13,9 +13,9 @@ import Context from './contexts/Context';
 function Login() {
     const [user, loading] = useAuthState(auth)
     const [hidden, setHidden] = useState(false)
-
-    console.log(user)
-    console.log(auth)
+    const [searchUser, setSearchUser] = useState("")
+    const [myUser, setMyUser] = useState({})
+    const [chat, setChat] = useState("")
 
     const handleSignin = () => {
         console.log("teste2")
@@ -34,11 +34,16 @@ function Login() {
 
     useEffect(() => {
         if(user){
-            console.log("teste")
+            setMyUser({
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL
+            })
             setDoc(doc(db, "users", user.uid), {
                 name: user.displayName,
                 email: user.email,
-            });
+                photo: user.photoURL
+            })
         }
     }, [user]);
 
@@ -63,7 +68,7 @@ function Login() {
     }
 
     return (
-        <Context.Provider value={{ hidden, setHidden, user }}>
+        <Context.Provider value={{ hidden, setHidden, myUser, searchUser, setSearchUser, chat, setChat }}>
             <Aside />
             <Chat user={user}/>
             <Info />

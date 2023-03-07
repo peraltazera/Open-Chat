@@ -1,23 +1,29 @@
 import { useState, useContext } from 'react'
 import './Footer.css'
 import { BiSend, BiImages, BiLocationPlus, BiHappy } from 'react-icons/bi';
-import { collection, addDoc, updateDoc, doc, arrayUnion, setDoc } from "firebase/firestore";
+import { updateDoc, doc, arrayUnion } from "firebase/firestore";
 import { db } from "../../services/FireBaseConfigKey";
 import Context from '../contexts/Context';
+import { serverTimestamp } from 'firebase/firestore';
 
 function Footer() {
 
   const [message, setMessage] = useState("")
-  const { user } = useContext(Context)
+  const { myUser, chat } = useContext(Context)
+
+  // console.log("serverTimestamp")
+  // console.log(serverTimestamp())
 
   const SendMSG = () => { 
-    const Ref = doc(db, "Chats", "Messages");
+    const Ref = doc(db, "Chats", chat || "Messages");
     updateDoc(Ref, {
         messages: arrayUnion(
           {
-            user: user.email,
+            name: myUser.name,
+            email: myUser.email,
             message: message,
-            date: new Date(),
+            photo: myUser.photo,
+            messageDate: new Date()
           }
         )
     });

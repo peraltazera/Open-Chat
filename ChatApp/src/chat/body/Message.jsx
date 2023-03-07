@@ -5,17 +5,17 @@ import Context from '../../contexts/Context';
 
 function Message(props) {
 
-    const { user } = useContext(Context)
+    const { myUser } = useContext(Context)
     
-    const message = props.author == user.email ? "MyMessage" : "OtherMessage"
+    const message = props.email == myUser.email ? "MyMessage" : "OtherMessage"
 
     return (
         <div className={message}>
-            <img src={img} alt="Logo" />
+            <img src={props.photo} alt="Logo" />
             <div className="ContainerMessage">
                 <div className="Info">
-                    <p className="Name">{props.author}</p>
-                    <p className="Date">13:12 PM</p>
+                    <p className="Name">{props.name}</p>
+                    <p className="Date">{`${props.date.toDate().getUTCHours()}:${props.date.toDate().getUTCMinutes()}`}</p>
                 </div>
                 <div className="Message">
                     <p>{props.msg}</p>
