@@ -2,23 +2,28 @@ import { useEffect, useRef, useState, useContext } from 'react'
 import './Body.css'
 import Message from './Message'
 import Date from './Date'
-import { collection, onSnapshot, doc, query, orderBy, limit } from "firebase/firestore";
+import { collection, onSnapshot, doc, query, orderBy, where } from "firebase/firestore";
 import { db } from "../../../services/FireBaseConfigKey";
-import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { useDocumentData, useCollectionData } from 'react-firebase-hooks/firestore';
 import Context from '../../contexts/Context';
 
 function Body() {
 
-  const [messages, setMessages] = useState("")
-  const { chat } = useContext(Context)
+  console.log("Body Chat")
+
+  const { chatUser, chats, myUser, messages, setMessages } = useContext(Context)
   const refBody = useRef(null)
 
-  const messageRef = doc(db, "Chats", chat || "Messages")
-  const [messagesDoc] = useDocumentData(messageRef)
+  const chatsQuery = query(collection(db, "Chats"), where("id", "==", chatUser.id || ""));
+  const [messagesDoc] = useCollectionData(chatsQuery)
 
   useEffect(() => {
     if(messagesDoc)
-    setMessages(messagesDoc.messages)
+    {
+      if(messagesDoc.length > 0){
+        setMessages(messagesDoc[0].messages)
+      }
+    }
   }, [messagesDoc]);
 
    useEffect (() => {
@@ -27,7 +32,7 @@ function Body() {
     }
   }, [messages])
 
-  if(messages == [])
+  if(messages == [] || !messages)
   {
     return (
       <div className="Body" ref={refBody}>

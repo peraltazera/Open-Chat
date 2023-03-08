@@ -6,22 +6,22 @@ import { BiImages, BiPlayCircle, BiFolderMinus } from 'react-icons/bi';
 import { TbFileDescription } from 'react-icons/tb';
 
 function Info() {
-    const { hidden } = useContext(Context)
+    const { hidden, chatUser } = useContext(Context)
 
     return (
         <>
-           { hidden ? <Results /> : null }
+           { hidden ? <Results user={chatUser} /> : null }
         </>
     )
 }
   
-const Results = () => (
+const Results = (props) => (
     <div className="InfoChat">
         <div className="Title">
-            <img src={img} alt="Logo" />
+            <img src={props.user.photo} alt="Logo" />
             <span className="Text">
-                <h2>Victor Pereira</h2>
-                <p>Victorgamedeveloper@gmail.com</p>
+                <h2>{props.user.name}</h2>
+                <p>{props.user.email}</p>
             </span>
         </div>
         <span className="Docs">
@@ -30,28 +30,28 @@ const Results = () => (
                 <TbFileDescription size={24} className="Icon IconDisabled"/>  
                 <span className="Text">
                     <h4>Documents</h4>
-                    <p>129 Files - 375 MB</p>
+                    <p>0 Files - 0 MB</p>
                 </span>
             </div>
             <div className="Cards IconDisabled">
                 <BiImages size={24} className="Icon IconDisabled"/>  
                 <span className="Text">
                     <h4>Photos</h4>
-                    <p>129 Files - 375 MB</p>
+                    <p>0 Files - 0 MB</p>
                 </span>
             </div>
             <div className="Cards IconDisabled">
                 <BiPlayCircle size={24} className="Icon IconDisabled"/>  
                 <span className="Text">
                     <h4>Videos</h4>
-                    <p>129 Files - 375 MB</p>
+                    <p>0 Files - 0 MB</p>
                 </span>
             </div>
             <div className="Cards IconDisabled">
                 <BiFolderMinus size={24} className="Icon IconDisabled"/>  
                 <span className="Text">
                     <h4>Other Files</h4>
-                    <p>129 Files - 375 MB</p>
+                    <p>0 Files - 0 MB</p>
                 </span>
             </div>
          </span>

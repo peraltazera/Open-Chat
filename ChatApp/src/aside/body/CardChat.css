@@ -9,11 +9,19 @@
     border-radius: 8px;
     border: none;
 }
-
 .Aside .Body .CardChat:hover {
-    background-color: rgb(255, 255, 255,0.1);
+    background-color: rgb(255, 255, 255,0.06);
     cursor: pointer;
 }
+
+.Aside .Body .Select {
+    background-color: rgb(255, 255, 255,0.12);
+}
+
+.Aside .Body .Select:hover {
+    background-color: rgb(255, 255, 255,0.12);
+}
+
 
 .Aside .Body .CardChat .Info {
     display: flex;

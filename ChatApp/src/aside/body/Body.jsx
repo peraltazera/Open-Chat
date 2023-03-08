@@ -6,58 +6,53 @@ import { useCollectionData, useDocumentData } from 'react-firebase-hooks/firesto
 import { query, collection, where, doc, getDocs } from "firebase/firestore";
 import { db } from "../../../services/FireBaseConfigKey";
 
-const cards = [
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  {author: "Victor", status: "Thanks!", date: "15:20 PM", num: "2"},
-  ]
-
 function Body() {
 
+  console.log("Body Aside")
+
   const [userList, setUserList] = useState([])
-  const { searchUser, myUser } = useContext(Context)
+  const [chatId, setChatId] = useState([])
+  const [emailList, setEmailList] = useState([])
+  const { searchUser, myUser, setChats, chatUser } = useContext(Context)
 
   const chatsQuery = query(collection(db, "Chats"), where("user", "array-contains", myUser.email || ""));
+  const userQuery = query(collection(db, "users"));
+
   const [chatsDoc] = useCollectionData(chatsQuery)
+
+  const fetchData = async () => {
+    const userDoc = await getDocs(userQuery)
+    setUserList([])
+    userDoc.forEach((doc) => {
+      if(doc){
+          emailList.map(user => {
+          if(user.email == doc.data().email){
+            setUserList(oldArray => [...oldArray, {data: doc.data(), id: user.id}])
+          }
+        } )
+      }
+    });
+  }
 
   useEffect(() => {
     if(chatsDoc){
-      setUserList([])
-      const listChat = chatsDoc.map((chat) => {
-        const user = chat.user.filter(user => user != myUser.email)
-        return user
-      })
-      console.log(listChat)
-      listChat.map(user => {
-        const q = query(collection(db, "users"), where("email", "==", user[0]));
-        const fetchData = async () => {
-          const test = await getDocs(q)
-          test.forEach((doc) => {
-            if(doc){
-              setUserList(oldArray => [...oldArray, doc.data()])
-            }
-          });
-        }
-        fetchData()
-      })
+        setChats(chatsDoc)
+        setEmailList(chatsDoc.map((chat) => {
+          const user = chat.user.filter(user => user != myUser.email)
+          return {email: user[0], id: chat.id }
+        }))
     }
-    console.log(userList)
   }, [chatsDoc]);
+
+  useEffect(() => {
+    fetchData()
+  }, [emailList]);
 
   if(searchUser)
   {
-    console.log(searchUser)
     return (
       <div className="Body">
-          <Card num={0} name={searchUser.name} photo={searchUser.photo} status={"Online"} date={14} email={searchUser.email}/>
+          <Card num={0} name={searchUser.name} photo={searchUser.photo} status={"Online"} date={14} email={searchUser.email} />
       </div>
     )
   }
@@ -65,7 +60,13 @@ function Body() {
   if(userList){
       return (
       <div className="Body">
-          {userList.map((user, id) => <Card key={id} num={0} name={user.name} photo={user.photo} status={"Online"} date={14} email={user.email}/>)}
+          {userList.map((user, id) => {
+            let select = ""
+            if(user.id == chatUser.id){
+              select = "Select"
+            }
+            return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={"Online"} date={14} email={user.data.email} idChat={user.id} select={select}/>
+          } )}
       </div>
     )
   }

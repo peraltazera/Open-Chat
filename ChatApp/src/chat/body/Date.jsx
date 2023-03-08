@@ -2,6 +2,9 @@ import { useState } from 'react'
 import './Date.css'
 
 function Date(props) {
+
+    console.log("Date Chat")
+
     return (
         <div className="Date">
             <span className="Line" />

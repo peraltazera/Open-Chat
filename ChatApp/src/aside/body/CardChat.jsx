@@ -1,30 +1,51 @@
 import { useEffect, useContext } from 'react'
 import './CardChat.css'
 import img from '../../assets/Victor.png';
-import { doc, addDoc, collection } from "firebase/firestore";
+import { doc, setDoc, collection, query, where, getDocs } from "firebase/firestore";
 import Context from '../../contexts/Context';
 import { db } from "../../../services/FireBaseConfigKey";
 
 function CardChat(props) {
 
-  const { myUser, setChat, chat } = useContext(Context)
+  console.log("CardChat")
 
-  const CreateChat = async () => {
-    console.log(myUser)
-        await addDoc(collection(db, "Chats"), {
+  const { myUser, setChatUser, chat, chats, setChatId, setInputSearchUser } = useContext(Context)
+
+  const CreateChat = async () => {    
+        let createChat = true  
+        chats.forEach(chat => {
+          chat.user.forEach(user => {
+            if(props.email == user){
+              createChat = false
+            }
+          })
+        });
+        if(createChat){
+          const id = myUser.email+props.email
+          await setDoc(doc(db, "Chats", id), {
+            id: id,
             user: [myUser.email,props.email],
             messages: []
-        });
-        // addDoc(doc(db, "Chats", myUser.email+props.email), {
-        //     user: [myUser.email,props.email],
-        //     messages: []
-        // });
-        setChat([myUser.email,props.email])
-        console.log(chat)
+          });
+          setChatUser({
+            photo: props.photo,
+            name: props.name,
+            email: props.email,
+            id: id
+          })
+        }else{
+          setChatUser({
+            photo: props.photo,
+            name: props.name,
+            email: props.email,
+            id: props.idChat
+          })
+        }
+        setInputSearchUser("")
   };
 
   return (
-    <div className="CardChat" onClick={CreateChat}>
+    <div className={`CardChat ${props.select}`} onClick={CreateChat}>
         <img src={props.photo || img} alt="Logo" />
         <div className="Info">
           <span className="Top">

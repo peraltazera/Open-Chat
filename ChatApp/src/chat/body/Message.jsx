@@ -5,6 +5,8 @@ import Context from '../../contexts/Context';
 
 function Message(props) {
 
+    console.log("Massage Chat")
+
     const { myUser } = useContext(Context)
     
     const message = props.email == myUser.email ? "MyMessage" : "OtherMessage"

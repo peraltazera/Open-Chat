@@ -5,14 +5,17 @@ import { BiSearch } from 'react-icons/bi';
 import Context from '../contexts/Context';
 
 function Header() {
+
+  console.log("Header Chat")
+
   const onClick = () => setHidden(!hidden)
-  const { hidden, setHidden } = useContext(Context)
+  const { hidden, setHidden, chatUser } = useContext(Context)
 
   return (
     <div className="Header">
       <span className="Info" onClick={onClick}>
-        <img src={img} alt="Logo" />;
-        <h1>Victor Pereira</h1>
+        <img src={chatUser.photo} alt="Logo" />
+        <h1>{chatUser.name}</h1>
       </span>
       <span>
         <BiSearch size={24} className="Icon IconDisabled"/>  

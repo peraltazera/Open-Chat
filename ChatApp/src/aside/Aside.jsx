@@ -5,6 +5,9 @@ import Body from './body/Body'
 import Footer from './Footer'
 
 function Aside() {
+
+  console.log("Aside")
+
   return (
     <div className="Aside">
       <Header />

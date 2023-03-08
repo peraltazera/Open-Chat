@@ -15,10 +15,17 @@ function Login() {
     const [hidden, setHidden] = useState(false)
     const [searchUser, setSearchUser] = useState("")
     const [myUser, setMyUser] = useState({})
-    const [chat, setChat] = useState("")
+    const [chatUser, setChatUser] = useState("")
+    const [chats, setChats] = useState("")
+    const [chatId, setChatId] = useState("")
+    const [messages, setMessages] = useState([])
+    const [inputSearchUser, setInputSearchUser] = useState("")
 
     const handleSignin = () => {
-        console.log("teste2")
+        setChatUser("")
+        console.log(chatUser)
+        setMessages([])
+        console.log(chatId)
         signInWithPopup(auth, provider)
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -34,6 +41,7 @@ function Login() {
 
     useEffect(() => {
         if(user){
+            console.log("Login")
             setMyUser({
                 name: user.displayName,
                 email: user.email,
@@ -68,7 +76,8 @@ function Login() {
     }
 
     return (
-        <Context.Provider value={{ hidden, setHidden, myUser, searchUser, setSearchUser, chat, setChat }}>
+        <Context.Provider value={{ hidden, setHidden, myUser, searchUser, setSearchUser, chatUser, setChatUser, chats, 
+        setChats, chatId, setChatId, messages, setMessages, inputSearchUser, setInputSearchUser }}>
             <Aside />
             <Chat user={user}/>
             <Info />

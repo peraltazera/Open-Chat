@@ -11,8 +11,9 @@ import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
 
 function Header() {
 
-  const [user, setUsers] = useState("")
-  const { searchUser, setSearchUser } = useContext(Context)
+  console.log("Header Aside")
+
+  const { searchUser, setSearchUser, inputSearchUser, setInputSearchUser } = useContext(Context)
 
   const validate = (email) => {
         let res = false;
@@ -22,15 +23,14 @@ function Header() {
   }
 
   useEffect(() => {
-    if(validate(user)){
-      const q = query(collection(db, "users"), where("email", "==", user));
+    if(validate(inputSearchUser)){
+      const q = query(collection(db, "users"), where("email", "==", inputSearchUser));
       const fetchData = async () => {
         const test = await getDocs(q)
         setSearchUser("")
         test.forEach((doc) => {
           if(doc){
             setSearchUser(doc.data())
-            console.log(doc.data())
           }
         });
       }
@@ -39,10 +39,9 @@ function Header() {
     else{
       setSearchUser("")
     }
-  }, [user]);
+  }, [inputSearchUser]);
 
   const handleSignout = () => {
-    console.log(auth)
     signOut(auth).then((result) => { console.log(auth) }).catch((error) => { console.log(auth) });
   }
 
@@ -59,7 +58,7 @@ function Header() {
         </span>
         <span className="Input">
           <span className="SpanIcon"><BiSearch size={24} color="#999999" className="Icon"/></span>
-          <input type="search" placeholder="Search..." value={user} onChange={(e) => setUsers(e.target.value)}/>
+          <input type="search" placeholder="Search..." value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
         </span>
     </div>
   )
