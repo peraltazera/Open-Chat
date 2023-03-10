@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 import './Footer.css'
 import { BiSend, BiImages, BiLocationPlus, BiHappy } from 'react-icons/bi';
-import { updateDoc, doc, arrayUnion, Timestamp, where, getDocs, collection, getDoc, query } from "firebase/firestore";
+import { updateDoc, doc, arrayUnion, Timestamp, collection, addDoc } from "firebase/firestore";
 import { db } from "../../services/FireBaseConfigKey";
 import Context from '../contexts/Context';
 
@@ -10,21 +10,29 @@ function Footer() {
   console.log("Footer Chat")
 
   const [message, setMessage] = useState("")
-  const { myUser, chat, chatUser } = useContext(Context)
+  const { myUser, chatUser } = useContext(Context)
 
   const SendMSG = async () => { 
-    const Ref = doc(db, "Chats", chatUser.id);
-    updateDoc(Ref, {
-        messages: arrayUnion(
-          {
-            name: myUser.name,
-            email: myUser.email,
-            message: message,
-            photo: myUser.photo,
-            messageDate: Timestamp.fromDate(new Date())
-          }
-        )
+    await addDoc(collection(doc(db, "Chats", chatUser.id), "Messages"), {
+      name: myUser.name,
+      email: myUser.email,
+      message: message,
+      photo: myUser.photo,
+      messageDate: Timestamp.fromDate(new Date())
     });
+    // const Ref = doc(collection(doc(db, "Chats", chatUser.id), "Messages"), chatUser.id);
+    // console.log(Ref)
+    // updateDoc(Ref, {
+    //     messages: arrayUnion(
+    //       {
+    //         name: myUser.name,
+    //         email: myUser.email,
+    //         message: message,
+    //         photo: myUser.photo,
+    //         messageDate: Timestamp.fromDate(new Date())
+    //       }
+    //     )
+    // });
     setMessage('')
   }
 

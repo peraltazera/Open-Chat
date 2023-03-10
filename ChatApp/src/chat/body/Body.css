@@ -7,3 +7,17 @@
     flex: 1;
     overflow-y: auto;
 }
+
+.Chat .Body button {
+    margin: 0px auto;
+    background-color: transparent;
+    padding: 8px 16px;
+    color: #c0c0c0;
+    border-radius: 8px;
+    /* border: none; */
+    border: #c0c0c0 2px solid;
+}
+
+.Chat .Body button:hover {
+    cursor: pointer;
+}

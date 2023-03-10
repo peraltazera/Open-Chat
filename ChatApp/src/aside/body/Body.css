@@ -3,3 +3,45 @@
     flex: 1;
     overflow-y: auto;
 }
+
+.Aside .Input .SpanIcon {
+    padding-top: 6px;
+}
+
+.Aside input {
+    color: #fff;
+    font-size: 18px;
+    width: 100%;
+    background-color: #15161a;
+    height: 46px;
+    resize: none;
+    border: none;
+}
+
+.Aside input::placeholder {
+    color: rgb(165, 165, 165);
+}
+
+.Aside input:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+.Aside input::selection {
+    background-color: #444444; 
+    color: #fff; 
+    caret-color: #fff; 
+}
+
+.Aside .Input {
+    gap: 20px;
+    background-color: #15161a;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    padding: 0px 16px;
+    margin: 20px auto;
+}

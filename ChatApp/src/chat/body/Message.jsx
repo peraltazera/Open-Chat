@@ -1,30 +1,25 @@
 import { useContext } from 'react'
-import './Message.css'
-import img from '../../assets/Victor.png';
 import Context from '../../contexts/Context';
+import FirstMessage from './FirstMessage'
+import OtherMessage from './OtherMessage'
 
 function Message(props) {
 
     console.log("Massage Chat")
-
+    
     const { myUser } = useContext(Context)
     
-    const message = props.email == myUser.email ? "MyMessage" : "OtherMessage"
+    const message = props.email == myUser.email ? "MyMessage" : "AnotherMessage"
 
-    return (
-        <div className={message}>
-            <img src={props.photo} alt="Logo" />
-            <div className="ContainerMessage">
-                <div className="Info">
-                    <p className="Name">{props.name}</p>
-                    <p className="Date">{`${props.date.toDate().getUTCHours()}:${props.date.toDate().getUTCMinutes()}`}</p>
-                </div>
-                <div className="Message">
-                    <p>{props.msg}</p>
-                </div>
-            </div>
-        </div>
-    )
+    if(props.email != props.emailPre){
+        console.log("FirstMessage")
+        return <FirstMessage {...props} message={message}/>
+    }
+    else
+    {
+        console.log("FirstMessage")
+        return <OtherMessage {...props} message={message}/>
+    }
 }
 
 export default Message

@@ -1,7 +1,7 @@
-import { useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import './CardChat.css'
 import img from '../../assets/Victor.png';
-import { doc, setDoc, collection, query, where, getDocs } from "firebase/firestore";
+import { doc, setDoc, addDoc, collection, getCountFromServer } from "firebase/firestore";
 import Context from '../../contexts/Context';
 import { db } from "../../../services/FireBaseConfigKey";
 
@@ -9,7 +9,7 @@ function CardChat(props) {
 
   console.log("CardChat")
 
-  const { myUser, setChatUser, chat, chats, setChatId, setInputSearchUser } = useContext(Context)
+  const { myUser, setChatUser, chatUser, chats, setInputSearchUser, setInfo, setlimitMessages, setMaxMessages } = useContext(Context)
 
   const CreateChat = async () => {    
         let createChat = true  
@@ -25,7 +25,6 @@ function CardChat(props) {
           await setDoc(doc(db, "Chats", id), {
             id: id,
             user: [myUser.email,props.email],
-            messages: []
           });
           setChatUser({
             photo: props.photo,
@@ -33,14 +32,16 @@ function CardChat(props) {
             email: props.email,
             id: id
           })
-        }else{
+        }else if(props.idChat != chatUser.id){
           setChatUser({
             photo: props.photo,
             name: props.name,
             email: props.email,
             id: props.idChat
           })
+          setlimitMessages(100)
         }
+        setInfo(false)
         setInputSearchUser("")
   };
 

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './Date.css'
 
 function Date(props) {

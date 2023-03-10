@@ -1,0 +1,64 @@
+.Chat .Body .Other {
+    display: flex;
+    width: 100%;
+    padding: 0px 40px;
+    margin-bottom: 10px;
+}
+
+.Chat .Body .Other.MyMessage {
+    flex-direction: row-reverse;
+    justify-content: end;
+}
+
+.Chat .Body .Other.AnotherMessage {
+    flex-direction: row;
+    justify-content: start;
+}
+
+.Chat .Body .Other .ContainerMessage{
+    display: flex;
+    width: 50%;
+    max-width: 50%;
+    align-items: end;
+}
+
+.Chat .Body .Other.MyMessage .ContainerMessage{
+    flex-direction: row;
+    justify-content: end;
+}
+
+.Chat .Body .Other.AnotherMessage .ContainerMessage{
+    flex-direction: row-reverse;
+    justify-content: start;
+}
+
+.Chat .Body .Other .Message{
+    color:white;
+    padding: 12px 24px;
+    width:fit-content;
+    max-width: 100%;
+    border-radius: 12px 12px 12px 12px;
+}
+
+.Chat .Body .Other .Message .Text{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.Chat .Body .Other.MyMessage .Message{
+    background-color: #296eff;
+    margin: 0px 10px 0px 0px;
+}
+
+.Chat .Body .Other.AnotherMessage .Message{
+    background-color: #1e1f25;
+    margin: 0px 0px 0px 10px;
+}
+
+.Chat .Body .Other .Date{
+    color:rgb(156, 156, 156);
+    font-size: 10px;
+    padding: 0px 10px;
+    font-weight: 300;
+    width: fit-content;
+}

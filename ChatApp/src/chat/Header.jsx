@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import './Header.css'
-import img from '../assets/Victor.png';
 import { BiSearch } from 'react-icons/bi';
 import Context from '../contexts/Context';
 
@@ -8,8 +7,8 @@ function Header() {
 
   console.log("Header Chat")
 
-  const onClick = () => setHidden(!hidden)
-  const { hidden, setHidden, chatUser } = useContext(Context)
+  const onClick = () => setInfo(!info)
+  const { info, setInfo, chatUser } = useContext(Context)
 
   return (
     <div className="Header">

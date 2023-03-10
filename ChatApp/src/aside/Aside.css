@@ -1,6 +1,6 @@
 .Aside {
     display: flex;
     flex-direction: column;
-    background-color: rgb(78, 78, 78);
+    background-color: #212329;
     width: 400px;
 }

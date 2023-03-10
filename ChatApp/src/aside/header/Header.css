@@ -1,0 +1,16 @@
+.Aside .Header {
+    background-color: #212329;
+    color: white;
+    height: 96px;
+    display: flex;
+    padding: 40px 20px;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.Aside .Header .Title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}

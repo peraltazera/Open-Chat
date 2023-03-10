@@ -11,8 +11,11 @@ import { FcGoogle } from 'react-icons/fc';
 import Context from './contexts/Context';
 
 function Login() {
+
+    console.log("Login")
+
     const [user, loading] = useAuthState(auth)
-    const [hidden, setHidden] = useState(false)
+    const [info, setInfo] = useState(false)
     const [searchUser, setSearchUser] = useState("")
     const [myUser, setMyUser] = useState({})
     const [chatUser, setChatUser] = useState("")
@@ -20,12 +23,17 @@ function Login() {
     const [chatId, setChatId] = useState("")
     const [messages, setMessages] = useState([])
     const [inputSearchUser, setInputSearchUser] = useState("")
+    const [settings, setSettings] = useState(false)
+    const [title, setTitle] = useState("Chats")
+    const [limitMessages, setlimitMessages] = useState(100)
+    const [changeLimitMessages, setChangeLimitMessages] = useState(false)
+    const [maxMessages, setMaxMessages] = useState(0)
 
     const handleSignin = () => {
         setChatUser("")
-        console.log(chatUser)
         setMessages([])
-        console.log(chatId)
+        setSettings(false)
+        setInfo(false)
         signInWithPopup(auth, provider)
             .then((result) => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -41,7 +49,6 @@ function Login() {
 
     useEffect(() => {
         if(user){
-            console.log("Login")
             setMyUser({
                 name: user.displayName,
                 email: user.email,
@@ -76,8 +83,9 @@ function Login() {
     }
 
     return (
-        <Context.Provider value={{ hidden, setHidden, myUser, searchUser, setSearchUser, chatUser, setChatUser, chats, 
-        setChats, chatId, setChatId, messages, setMessages, inputSearchUser, setInputSearchUser }}>
+        <Context.Provider value={{ info, setInfo, myUser, searchUser, setSearchUser, chatUser, setChatUser, chats, 
+        setChats, chatId, setChatId, messages, setMessages, inputSearchUser, setInputSearchUser, settings, setSettings,
+        title, setTitle, limitMessages, setlimitMessages, changeLimitMessages, setChangeLimitMessages, maxMessages, setMaxMessages }}>
             <Aside />
             <Chat user={user}/>
             <Info />
