@@ -1,58 +1,75 @@
 import { useContext } from 'react'
-import './Info.css'
 import Context from '../contexts/Context';
 import { BiImages, BiPlayCircle, BiFolderMinus } from 'react-icons/bi';
 import { TbFileDescription } from 'react-icons/tb';
+import IconDisabled from '../styles/IconDisabled.style';
+import Language from '../Language';
+import { InfoStl, HeaderStl, TitleHeaderStl, TextHeaderStl, ImageStl, CardStl, DocStl, CardTextsStl, TitleCardStl, TextCardStl, TitleDocStl } from './Info.style';
 
 function Info() {
 
     console.log("Info")
 
-    const { info, chatUser } = useContext(Context)
+    const { info, chatUser, language } = useContext(Context)
 
     if(info)
     {
         return (
-            <div className="InfoChat">
-                <div className="Title">
-                    <img src={chatUser.photo} alt="Logo" />
-                    <span className="Text">
-                        <h2>{chatUser.name}</h2>
-                        <p>{chatUser.email}</p>
-                    </span>
-                </div>
-                <span className="Docs">
-                    <h3>Attachments</h3>
-                    <div className="Cards IconDisabled">
-                        <TbFileDescription size={24} className="Icon IconDisabled"/>  
-                        <span className="Text">
-                            <h4>Documents</h4>
-                            <p>0 Files - 0 MB</p>
-                        </span>
-                    </div>
-                    <div className="Cards IconDisabled">
-                        <BiImages size={24} className="Icon IconDisabled"/>  
-                        <span className="Text">
-                            <h4>Photos</h4>
-                            <p>0 Files - 0 MB</p>
-                        </span>
-                    </div>
-                    <div className="Cards IconDisabled">
-                        <BiPlayCircle size={24} className="Icon IconDisabled"/>  
-                        <span className="Text">
-                            <h4>Videos</h4>
-                            <p>0 Files - 0 MB</p>
-                        </span>
-                    </div>
-                    <div className="Cards IconDisabled">
-                        <BiFolderMinus size={24} className="Icon IconDisabled"/>  
-                        <span className="Text">
-                            <h4>Other Files</h4>
-                            <p>0 Files - 0 MB</p>
-                        </span>
-                    </div>
-                 </span>
-            </div>
+            <InfoStl>
+
+                <HeaderStl>
+                    <ImageStl src={chatUser.photo} alt="Logo" />
+                    <TitleHeaderStl>{chatUser.name}</TitleHeaderStl>
+                    <TextHeaderStl>{chatUser.email}</TextHeaderStl>
+                </HeaderStl>
+
+                <DocStl>
+
+                    <TitleDocStl>{Language[language].chat.info.attachments}</TitleDocStl>
+
+                    <IconDisabled>
+                        <CardStl>
+                            <TbFileDescription size={32} color="#999999"/>  
+                            <CardTextsStl>
+                                <TitleCardStl>{Language[language].chat.info.documents}</TitleCardStl>
+                                <TextCardStl>0 {Language[language].chat.info.files} - 0 MB</TextCardStl>
+                            </CardTextsStl>
+                        </CardStl>
+                    </IconDisabled>
+
+                    <IconDisabled>
+                        <CardStl>
+                            <BiImages size={32} color="#999999"/>  
+                            <CardTextsStl>
+                                <TitleCardStl>{Language[language].chat.info.photos}</TitleCardStl>
+                                <TextCardStl>0 {Language[language].chat.info.files} - 0 MB</TextCardStl>
+                            </CardTextsStl>
+                        </CardStl>
+                    </IconDisabled>
+
+                    <IconDisabled>
+                        <CardStl>
+                            <BiPlayCircle size={32} color="#999999"/>  
+                            <CardTextsStl>
+                                <TitleCardStl>{Language[language].chat.info.videos}</TitleCardStl>
+                                <TextCardStl>0 {Language[language].chat.info.files} - 0 MB</TextCardStl>
+                            </CardTextsStl>
+                        </CardStl>
+                    </IconDisabled>
+
+                    <IconDisabled>
+                        <CardStl>
+                            <BiFolderMinus size={32} color="#999999"/>  
+                            <CardTextsStl>
+                                <TitleCardStl>{Language[language].chat.info.otherFiles}</TitleCardStl>
+                                <TextCardStl>0 {Language[language].chat.info.files} - 0 MB</TextCardStl>
+                            </CardTextsStl>
+                        </CardStl>
+                    </IconDisabled>
+
+                 </DocStl>
+                 
+            </InfoStl>
         )    
     }
 }

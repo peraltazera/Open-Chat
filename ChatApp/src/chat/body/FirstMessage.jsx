@@ -10,7 +10,7 @@ function FirstMessage(props) {
                     {/* <p className="Date">{`${props.date.toDate().getUTCHours()}:${props.date.toDate().getUTCMinutes()}`}</p> */}
                 </div>
                 <div className="ContainerMessageText">
-                    <p className="Date">{`${props.date.toDate().getUTCHours()}:${props.date.toDate().getUTCMinutes()}`}</p>
+                    <p className="Date">{`${props.date.toDate().getHours()}:${props.date.toDate().getMinutes()}`}</p>
                     <div className="Message">
                         <p className="Text">{props.msg}</p>
                     </div>

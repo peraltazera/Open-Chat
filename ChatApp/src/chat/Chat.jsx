@@ -1,32 +1,36 @@
 import { useContext } from 'react'
-import './Chat.css'
+// import './Chat.css'
 import Header from './Header'
 import Body from './body/Body'
 import Footer from './Footer'
 import Context from '../contexts/Context';
+import Language from '../Language';
+import {ChatStl, InitialStl, TextStl, TitleStl} from './Chat.style';
 
 function Chat(props) {
 
   console.log("Chat")
 
-  const { chatUser } = useContext(Context)
+  const { chatUser, language } = useContext(Context)
 
   if(chatUser.id){
     return (
-      <div className="Chat">
+      <ChatStl className='Chat'>
         <Header />
         <Body />
         <Footer />
-      </div>
+      </ChatStl>
     )
   }
-
-  return (
-    <div className="Initial">
-      <h1>Open.Chat</h1>
-      <p>Um chat integrado com o sistema de email do google</p>
-    </div>
-  )
+  else
+  {
+    return (
+      <InitialStl>
+        <TitleStl >Open.Chat</TitleStl>
+        <TextStl >{Language[language].chat.body.desc}</TextStl>
+      </InitialStl>
+    )
+  }
 }
 
 export default Chat

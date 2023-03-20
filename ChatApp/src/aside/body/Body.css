@@ -2,6 +2,8 @@
     background-color: #212329;
     flex: 1;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .Aside .Input .SpanIcon {

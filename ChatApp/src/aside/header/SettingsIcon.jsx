@@ -1,21 +1,22 @@
 import { useContext } from 'react'
-import './Header.css'
+// import './Header.css'
 import { AiOutlineSetting, AiOutlineClose } from 'react-icons/ai';
 import Context from '../../contexts/Context';
+import Language from '../../Language';
 
 function SettingsIcon() {
 
   console.log("SettingsIcon Aside")
 
-  const { settings, setSettings, setTitle } = useContext(Context)
+  const { settings, setSettings, setTitle, language } = useContext(Context)
 
   const Settings = () => {
     if(settings){
-      setTitle("Chats")
+      setTitle(Language[language].aside.header.titleChat)
     }
     else
     {
-      setTitle("Settings")
+      setTitle(Language[language].aside.header.titleSetings)
     }
     setSettings(!settings);
   }

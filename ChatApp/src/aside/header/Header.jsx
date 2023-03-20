@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react'
-import './Header.css'
-import { collection, getDocs, where, query } from "firebase/firestore";
-import { db } from "../../../services/FireBaseConfigKey";
+import { useContext } from 'react'
+// import './Header.css'
 import Context from '../../contexts/Context';
 import SettingsIcon from './SettingsIcon'
+import DivFlex from '../../styles/DivFlex.style';
+import Title from '../../styles/Title.style';
 
 function Header() {
 
@@ -12,14 +12,11 @@ function Header() {
   const { title } = useContext(Context)
 
   return (
-    <div className="Header">
-        <span className="Title">
-          <h1>{title}</h1>
-          <div>
-            <SettingsIcon />
-          </div>
-        </span>
-    </div>
+    <DivFlex height="96px" padding="40px 20px" 
+    justifyContent="space-between" alignItems="center" className="Header">
+          <Title>{title}</Title>
+          <SettingsIcon />
+    </DivFlex>
   )
 }
 

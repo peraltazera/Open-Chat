@@ -3,10 +3,13 @@ import './Body.css'
 import Card from './CardChat'
 import Context from '../../contexts/Context';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { query, collection, where, getDocs } from "firebase/firestore";
+import { query, collection, where, getDocs, doc, orderBy, limit } from "firebase/firestore";
 import { db } from "../../../services/FireBaseConfigKey";
 import { BiSearch } from 'react-icons/bi';
 import Settings  from './Settings';
+import DivFlex from '../../styles/DivFlex.style';
+import Text from '../../styles/Text.style';
+import Language from '../../Language';
 
 function Body() {
 
@@ -14,25 +17,47 @@ function Body() {
 
   const [userList, setUserList] = useState([])
   const [emailList, setEmailList] = useState([])
-  const { searchUser, myUser, setChats, chatUser, settings, inputSearchUser, setInputSearchUser, setSearchUser } = useContext(Context)
+  const { searchUser, myUser, setChats, chatUser, settings, inputSearchUser, setInputSearchUser, setSearchUser, language } = useContext(Context)
 
   const chatsQuery = query(collection(db, "Chats"), where("user", "array-contains", myUser.email || ""));
   const userQuery = query(collection(db, "users"));
 
-  const [chatsDoc, loading] = useCollectionData(chatsQuery)
+  const [chatsDoc] = useCollectionData(chatsQuery)
 
   const fetchData = async () => {
     const userDoc = await getDocs(userQuery)
+    const chatList = []
     setUserList([])
     userDoc.forEach((doc) => {
       if(doc){
           emailList.map(user => {
           if(user.email == doc.data().email){
-            setUserList(oldArray => [...oldArray, {data: doc.data(), id: user.id}])
+            // setUserList(oldArray => [...oldArray, {data: doc.data(), id: user.id, message: user.message}])
+            chatList.push({data: doc.data(), id: user.id, message: user.message})
           }
         } )
       }
     });
+    setUserList(chatList.sort((x, y) => x.message.messageDate - y.message.messageDate).reverse())
+  }
+
+  const previewMessage = message => {
+    if(message)
+    {
+      if(message.length > 16)
+      {
+        message = message.slice(0, 16)
+        message = message.split(" ")
+        if(message.length > 1){
+          message.pop()
+        }
+        message[message.length -1] = message[message.length -1].replace(/[^a-zA-Z0-9]/g, "");
+        message = message.join(" ")
+        message = message + "..."
+      }
+      return message
+    }
+    return {}
   }
 
   useEffect(() => {
@@ -40,7 +65,7 @@ function Body() {
         setChats(chatsDoc)
         setEmailList(chatsDoc.map((chat) => {
           const user = chat.user.filter(user => user != myUser.email)
-          return {email: user[0], id: chat.id }
+          return {email: user[0], id: chat.id, message: chat.message }
         }))
     }
   }, [chatsDoc]);
@@ -77,11 +102,10 @@ function Body() {
 
   if(settings)
   {
-    console.log(settings)
     return (
-      <div className="Body">
+      <DivFlex backgroundColor="#212329" flex="1" flexDirection="column" overflowY="auto">
           <Settings />
-      </div>
+      </DivFlex>
     )
   }
 
@@ -91,7 +115,7 @@ function Body() {
       <>
         <div className="Input">
           <span className="SpanIcon"><BiSearch size={24} color="#999999" className="Icon"/></span>
-          <input type="search" placeholder="Search or start a new chat" value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
+          <input type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
         </div>
         <div className="Body">
             <Card num={0} name={searchUser.name} photo={searchUser.photo} status={"Online"} date={14} email={searchUser.email} />
@@ -105,7 +129,7 @@ function Body() {
         <>
           <div className="Input">
             <span className="SpanIcon"><BiSearch size={24} color="#999999" className="Icon"/></span>
-            <input type="search" placeholder="Search or start a new chat" value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
+            <input type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
           </div>
           <div className="Body">
               {userList.map((user, id) => {
@@ -113,7 +137,12 @@ function Body() {
                 if(user.id == chatUser.id){
                   select = "Select"
                 }
-                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={"Online"} date={14} email={user.data.email} idChat={user.id} select={select}/>
+                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
+                date={`${user.message.messageDate.toDate().getHours()}:${user.message.messageDate.toDate().getMinutes()}`} 
+                email={user.data.email} idChat={user.id} select={select}/>
+                // return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={"dasdasd"} 
+                // date={"14"} 
+                // email={user.data.email} idChat={user.id} select={select}/>
               } )}
           </div>
         </>
@@ -121,9 +150,15 @@ function Body() {
   }
   
   return (
-    <div className="Body">
-        <p>User not found!</p>
-    </div>
+    <>
+      <div className="Input">
+        <span className="SpanIcon"><BiSearch size={24} color="#999999" className="Icon"/></span>
+        <input type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
+      </div>
+      <DivFlex backgroundColor="#212329" flex="1" flexDirection="column" padding="22px" alin overflowY="auto">
+          <Text color='rgb(170, 170, 170)' fontSize="16px">{Language[language].aside.body.notFound}</Text>
+      </DivFlex>
+    </>
   )
 }
 

@@ -5,7 +5,7 @@ function OtherMessage(props) {
         <div className={`Other ${props.message}`}>
             {/* <img src={props.photo} alt="Logo" /> */}
             <div className="ContainerMessage">
-                <p className="Date">{`${props.date.toDate().getUTCHours()}:${props.date.toDate().getUTCMinutes()}`}</p>
+                <p className="Date">{`${props.date.toDate().getHours()}:${props.date.toDate().getMinutes()}`}</p>
                 <div className="Message">
                     <p className="Text">{props.msg}</p>
                 </div>
@@ -14,4 +14,4 @@ function OtherMessage(props) {
     )
 }
 
-export default OtherMessage
+export default OtherMessage 

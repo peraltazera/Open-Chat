@@ -1,7 +1,7 @@
 import { useContext } from 'react'
-import './Header.css'
 import { BiSearch } from 'react-icons/bi';
 import Context from '../contexts/Context';
+import { HeaderStl, InfoStl, ImageStl, TitleStl } from './Header.styles';
 
 function Header() {
 
@@ -11,15 +11,13 @@ function Header() {
   const { info, setInfo, chatUser } = useContext(Context)
 
   return (
-    <div className="Header">
-      <span className="Info" onClick={onClick}>
-        <img src={chatUser.photo} alt="Logo" />
-        <h1>{chatUser.name}</h1>
-      </span>
-      <span>
-        <BiSearch size={24} className="Icon IconDisabled"/>  
-      </span>
-    </div>
+    <HeaderStl>
+      <InfoStl onClick={onClick}>
+        <ImageStl src={chatUser.photo} alt="Logo" />
+        <TitleStl>{chatUser.name}</TitleStl>
+      </InfoStl>
+      <BiSearch size={24} className="Icon IconDisabled"/>  
+    </HeaderStl>
   )
 }
 
