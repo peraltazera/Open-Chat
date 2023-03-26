@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import { AiOutlineSetting, AiOutlineClose } from 'react-icons/ai';
 import Context from '../../contexts/Context';
 import Language from '../../Language';
+import Icon from '../../styles/Icon.style';
 
 function SettingsIcon() {
 
@@ -24,13 +25,17 @@ function SettingsIcon() {
     if(settings)
     {
       return (
-        <AiOutlineClose size={24} className="Icon" onClick={Settings}/>
+        <Icon>
+          <AiOutlineClose size={24} onClick={Settings}/>
+        </Icon>
       ) 
     }
     else
     {
       return (
-        <AiOutlineSetting size={24} className="Icon" onClick={Settings}/>
+        <Icon>
+          <AiOutlineSetting size={24} onClick={Settings}/>
+        </Icon>
       ) 
     }
 }

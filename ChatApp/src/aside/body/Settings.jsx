@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import './Settings.css'
+// import './Settings.css'
 import { auth } from "../../../services/FireBaseConfigKey";
 import { BiExit } from 'react-icons/bi';
 import { signOut } from "firebase/auth";
@@ -8,6 +8,7 @@ import Language from '../../Language';
 import Switch from "react-switch";
 import dark from '../../styles/themes/dark';
 import light from '../../styles/themes/light';
+import {SettingsStl} from './Settings.style';
 
 function Settings() {
 
@@ -30,7 +31,7 @@ function Settings() {
   }
 
   return (
-    <div className="Settings">
+    <SettingsStl>
       <label for="cars">{Language[language].aside.settings.language}: 
         <select value={language} onChange={e => changeLanguage(e)} >
           <option value="english">english</option>
@@ -59,7 +60,7 @@ function Settings() {
           />
       </label>
       <BiExit size={24} className="Icon" onClick={handleSignout}/>
-    </div>
+    </SettingsStl>
   )
 }
 

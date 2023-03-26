@@ -1,13 +1,14 @@
 import styled from "styled-components"
 
-const IconDisabled = styled.span`
+const Icon = styled.span`
     padding: 0px;
     margin: 0px;
     color: ${(props) => props.theme.colors.icon};
-    
+
     &:hover {
-        cursor: no-drop;
+        cursor: pointer;
+        color: ${(props) => props.theme.colors.backgroundMyMessage};
     }
 `
 
-export default IconDisabled
+export default Icon

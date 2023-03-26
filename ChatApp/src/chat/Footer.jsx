@@ -1,10 +1,12 @@
 import { useState, useContext } from 'react'
 import { BiSend, BiImages, BiLocationPlus, BiHappy } from 'react-icons/bi';
-import { updateDoc, doc, Timestamp, collection, addDoc } from "firebase/firestore";
+import { updateDoc, doc, Timestamp, collection, addDoc, increment } from "firebase/firestore";
 import { db } from "../../services/FireBaseConfigKey";
 import Context from '../contexts/Context';
 import Language from '../Language';
 import { FooterStl, TextareaStl, InputStl } from './Footer.style';
+import IconDisabled from '../styles/IconDisabled.style';
+import Icon from '../styles/Icon.style';
 
 function Footer() {
 
@@ -14,24 +16,28 @@ function Footer() {
   const { myUser, chatUser, language } = useContext(Context)
 
   const SendMSG = async () => { 
-    await addDoc(collection(doc(db, "Chats", chatUser.id), "Messages"), {
-      name: myUser.name,
-      email: myUser.email,
-      message: message,
-      photo: myUser.photo,
-      messageDate: Timestamp.fromDate(new Date())
-    });
-    const Ref = doc(db, "Chats", chatUser.id)
-    updateDoc(Ref, {
-        message:
-          {
-            name: myUser.name,
-            email: myUser.email,
-            message: message,
-            photo: myUser.photo,
-            messageDate: Timestamp.fromDate(new Date())
-          }
-    });
+    if(message.trim())
+    {
+      await addDoc(collection(doc(db, "Chats", chatUser.id), "Messages"), {
+        name: myUser.name,
+        email: myUser.email,
+        message: message,
+        photo: myUser.photo,
+        messageDate: Timestamp.fromDate(new Date())
+      });
+      const Ref = doc(db, "Chats", chatUser.id)
+      updateDoc(Ref, {
+            message:
+            {
+              name: myUser.name,
+              email: myUser.email,
+              message: message,
+              photo: myUser.photo,
+              messageDate: Timestamp.fromDate(new Date())
+            },
+            [myUser.email.replace(/[^a-zA-Z0-9]/g, "")]: increment(1)
+      });
+    }
     setMessage('')
   }
 
@@ -39,10 +45,18 @@ function Footer() {
     <FooterStl>
         <InputStl>
           <TextareaStl name="postContent" value={message} onChange={(e) => setMessage(e.target.value)} rows={1} placeholder={Language[language].chat.footer.input}/>
-          <BiHappy size={26}  className="Icon IconDisabled"/>
-          <BiImages size={26} className="Icon IconDisabled"/>
-          <BiLocationPlus size={26} className="Icon IconDisabled"/>
-          <BiSend size={26} className="Icon" onClick={SendMSG}/>
+          <IconDisabled>
+            <BiHappy size={22} />
+          </IconDisabled>
+          <IconDisabled>
+            <BiImages size={22}/>
+          </IconDisabled>
+          <IconDisabled>
+            <BiLocationPlus size={22}/>
+          </IconDisabled>
+          <Icon>
+            <BiSend size={22} onClick={SendMSG}/>
+          </Icon>
         </InputStl>
     </FooterStl>
   )

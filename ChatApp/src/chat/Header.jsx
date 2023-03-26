@@ -2,6 +2,8 @@ import { useContext } from 'react'
 import { BiSearch } from 'react-icons/bi';
 import Context from '../contexts/Context';
 import { HeaderStl, InfoStl, ImageStl, TitleStl } from './Header.styles';
+import IconDisabled from '../styles/IconDisabled.style';
+import Icon from '../styles/Icon.style';
 
 function Header() {
 
@@ -16,7 +18,9 @@ function Header() {
         <ImageStl src={chatUser.photo} alt="Logo" />
         <TitleStl>{chatUser.name}</TitleStl>
       </InfoStl>
-      <BiSearch size={24} className="Icon IconDisabled"/>  
+      <IconDisabled>
+        <BiSearch size={24}/>  
+      </IconDisabled>
     </HeaderStl>
   )
 }

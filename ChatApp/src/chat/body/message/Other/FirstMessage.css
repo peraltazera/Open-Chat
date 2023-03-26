@@ -3,14 +3,6 @@
     width: 100%;
     padding: 0px 0px;
     margin-bottom: 10px;
-}
-
-.Chat .Body .First.MyMessage {
-    flex-direction: row-reverse;
-    justify-content: end;
-}
-
-.Chat .Body .First.AnotherMessage {
     flex-direction: row;
     justify-content: start;
 }
@@ -20,31 +12,15 @@
     flex-direction: column;
     width: 50%;
     max-width: 50%;
+    align-items: start;
 }
 
 .Chat .Body .First .ContainerMessageText{
     display: flex;
     align-items: end;
-}
-
-.Chat .Body .First.MyMessage .ContainerMessageText{
-    flex-direction: row;
-    justify-content: end;
-}
-
-.Chat .Body .First.AnotherMessage .ContainerMessageText{
     flex-direction: row-reverse;
     justify-content: start;
 }
-
-.Chat .Body .First.MyMessage .ContainerMessage{
-    align-items: end;
-}
-
-.Chat .Body .First.AnotherMessage .ContainerMessage{
-    align-items: start;
-}
-
 
 .Chat .Body .First .Message{
     color:white;
@@ -52,22 +28,16 @@
     padding: 12px 24px;
     width:fit-content;
     max-width: 100%;
-}
-
-.Chat .Body .First .Message .Text{
     font-size: 14px;
     font-weight: 400;
-}
-
-.Chat .Body .First.MyMessage .Message{
-    background-color: #296eff;
-    border-radius: 12px 0px 12px 12px;
-}
-
-.Chat .Body .First.AnotherMessage .Message{
     background-color: #1e1f25;
     border-radius: 0px 12px 12px 12px;
 }
+
+/* .Chat .Body .First .Message .Text{
+    font-size: 14px;
+    font-weight: 400;
+} */
 
 .Chat .Body .First img {
     height: 40px;
@@ -82,6 +52,8 @@
     gap: 0px;
     font-size: 16px;
     width: 100%;
+    flex-direction: row;
+    width: fit-content;
 }
 
 .Chat .Body .First .Date{
@@ -92,15 +64,7 @@
     width: fit-content;
 }
 
-.Chat .Body .First .Info .Name{
+/* .Chat .Body .First .Info .Name{
     width: fit-content;
-}
-
-.Chat .Body .First.MyMessage .Info{
-    flex-direction: row-reverse;
-}
-
-.Chat .Body .First.AnotherMessage .Info{
-    flex-direction: row;
-}
+} */
 

@@ -9,6 +9,7 @@
     border-radius: 8px;
     border: none;
 }
+
 .Aside .Body .CardChat:hover {
     background-color: rgb(255, 255, 255,0.06);
     cursor: pointer;

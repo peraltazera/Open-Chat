@@ -42,20 +42,6 @@ const GlobalStyle = createGlobalStyle`
         color: #fff; 
         caret-color: #fff; 
     }
-
-    .Icon {
-    color: #999999;
-    }
-
-    .Icon:hover {
-    cursor: pointer;
-    color: #296eff;
-    }
-
-    .IconDisabled:hover {
-    cursor: not-allowed;
-    color: #999999;
-    }
 `
 
 export default GlobalStyle

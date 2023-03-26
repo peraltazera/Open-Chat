@@ -1,11 +1,11 @@
 import { useEffect, useRef, useContext, useState } from 'react'
-import './Body.css'
-import Message from './Message'
-import Date from './Date'
+import Message from './message/Message'
+import Date from './message/Date'
 import { collection, query, where, limit, collectionGroup, doc, orderBy, getCountFromServer } from "firebase/firestore";
 import { db } from "../../../services/FireBaseConfigKey";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import Context from '../../contexts/Context';
+import {BodyStl, ButtonStl} from './Body.style';
 
 function Body() {
 
@@ -49,7 +49,7 @@ function Body() {
     }
   }, [messages])
 
-  const MaisMsg = () => {
+  const MoreMessages = () => {
     CreateChat()
     setChangeLimitMessages(true)
     setlimitMessages(limitMessages+100)
@@ -58,18 +58,18 @@ function Body() {
   if(messages == [] || !messages)
   {
     return (
-      <div className="Body" ref={refBody}>
+      <BodyStl className="Body" ref={refBody}>
           <Date text="March 4, 2023"/>
-      </div>
+      </BodyStl>
     )
   }
 
   return (
-    <div className="Body" ref={refBody}>
-        {maxMessages > limitMessages ? <button onClick={MaisMsg}>More messages</button> : null}
+    <BodyStl className="Body" ref={refBody}>
+        {maxMessages > limitMessages ? <ButtonStl onClick={MoreMessages}>More messages</ButtonStl> : null}
         <Date text="March 4, 2023"/>
         { messages.map((msg, id) => <Message key={id} msg={msg.message} email={msg.email} emailPre={id == 0 ? "" : messages[id - 1].email} name={msg.name} photo={msg.photo} date={msg.messageDate}/>) }
-    </div>
+    </BodyStl>
   )
 
 }

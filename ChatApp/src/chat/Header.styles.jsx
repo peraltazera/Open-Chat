@@ -1,13 +1,13 @@
 import styled from "styled-components"
 
 const HeaderStl = styled.div`
-    background-color: #212329;
+    background-color: ${(props) => props.theme.colors.backgroundAside};
     height: 80px;
     display: flex;
     align-items: center;
     padding: 32px;
-    border-left: solid 2px #1b1c23;
-    border-right: solid 2px #1b1c23;
+    border-left: solid 2px ${(props) => props.theme.colors.border};
+    border-right: solid 2px ${(props) => props.theme.colors.border};
     justify-content: space-between;
 `
 
@@ -25,7 +25,7 @@ const ImageStl = styled.img`
 `
 
 const TitleStl = styled.h1`
-    color: white;
+    color: ${(props) => props.theme.colors.primaryText};
     padding: 0px 24px;
     font-size: 18px;
 `

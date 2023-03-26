@@ -1,27 +1,27 @@
 import styled from "styled-components"
 
 const FooterStl = styled.div`
-    background-color: #282932;
+    background-color: ${(props) => props.theme.colors.backgroundFooterChat};
     height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-left: solid 2px #1b1c23;
-    border-right: solid 2px #1b1c23;
+    border-left: solid 2px ${(props) => props.theme.colors.border};
+    border-right: solid 2px ${(props) => props.theme.colors.border};
 `
 
 const TextareaStl = styled.textarea`
-    color: #fff;
+    color: ${(props) => props.theme.colors.primaryText};
     font-size: 16px;
     width: 100%;
-    background-color: #1e1f25;
+    background-color: ${(props) => props.theme.colors.backgroundOtherMessage};
     height: 46px;
     resize: none;
     padding: 12px 4px;
     border: none;
 
     &::placeholder {
-        color: rgb(156, 156, 156);
+        color: ${(props) => props.theme.colors.secondaryText};
     }
 
     &:focus {
@@ -31,15 +31,15 @@ const TextareaStl = styled.textarea`
     }
 
     &::selection {
-        background-color: #444444; 
-        color: #fff; 
-        caret-color: #fff; 
+        background-color: ${(props) => props.theme.colors.secondaryText};
+        color: ${(props) => props.theme.colors.primaryText};
+        caret-color: ${(props) => props.theme.colors.primaryText};
     }
 `
 
 const InputStl = styled.div`
     gap: 20px;
-    background-color: #1e1f25;
+    background-color: ${(props) => props.theme.colors.backgroundOtherMessage};
     border-radius: 24px 24px 24px 24px;
     display: flex;
     flex-direction: row;

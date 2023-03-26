@@ -7,9 +7,9 @@ import { query, collection, where, getDocs, doc, orderBy, limit } from "firebase
 import { db } from "../../../services/FireBaseConfigKey";
 import { BiSearch } from 'react-icons/bi';
 import Settings  from './Settings';
-import DivFlex from '../../styles/DivFlex.style';
-import Text from '../../styles/Text.style';
+import IconDisabled from '../../styles/IconDisabled.style';
 import Language from '../../Language';
+import {BodyStl, SpanIconStl, InputStl, InputContainerStl, NotFoundStl, BodySettingsStl} from './Body.style'
 
 function Body() {
 
@@ -57,7 +57,15 @@ function Body() {
       }
       return message
     }
-    return {}
+    return ""
+  }
+
+  const formatDate = date => {
+    if(date)
+    {
+      return `${date.toDate().getHours()}:${date.toDate().getMinutes()}`
+    }
+    return ""
   }
 
   useEffect(() => {
@@ -103,9 +111,9 @@ function Body() {
   if(settings)
   {
     return (
-      <DivFlex backgroundColor="#212329" flex="1" flexDirection="column" overflowY="auto">
+      <BodySettingsStl>
           <Settings />
-      </DivFlex>
+      </BodySettingsStl>
     )
   }
 
@@ -113,13 +121,15 @@ function Body() {
   {
     return (
       <>
-        <div className="Input">
-          <span className="SpanIcon"><BiSearch size={24} color="#999999" className="Icon"/></span>
-          <input type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
-        </div>
-        <div className="Body">
+        <InputContainerStl>
+          <SpanIconStl>
+              <BiSearch size={24}/>
+          </SpanIconStl>
+          <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
+        </InputContainerStl>
+        <BodyStl>
             <Card num={0} name={searchUser.name} photo={searchUser.photo} status={"Online"} date={14} email={searchUser.email} />
-        </div>
+        </BodyStl>
       </>
     )
   }
@@ -127,37 +137,63 @@ function Body() {
   if(userList){
       return (
         <>
-          <div className="Input">
-            <span className="SpanIcon"><BiSearch size={24} color="#999999" className="Icon"/></span>
-            <input type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
-          </div>
-          <div className="Body">
+          <InputContainerStl>
+            <SpanIconStl>
+                <BiSearch size={24}/>
+            </SpanIconStl>
+            <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
+          </InputContainerStl>
+          <BodyStl>
+
               {userList.map((user, id) => {
                 let select = ""
                 if(user.id == chatUser.id){
                   select = "Select"
                 }
                 return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
-                date={`${user.message.messageDate.toDate().getHours()}:${user.message.messageDate.toDate().getMinutes()}`} 
+                date={formatDate(user.message.messageDate)} 
                 email={user.data.email} idChat={user.id} select={select}/>
-                // return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={"dasdasd"} 
-                // date={"14"} 
-                // email={user.data.email} idChat={user.id} select={select}/>
               } )}
-          </div>
+
+
+
+              {/* {userList.map((user, id) => {
+                let select = ""
+                if(user.id == chatUser.id){
+                  select = "Select"
+                }
+                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
+                date={formatDate(user.message.messageDate)} 
+                email={user.data.email} idChat={user.id} select={select}/>
+              } )}
+              {userList.map((user, id) => {
+                let select = ""
+                if(user.id == chatUser.id){
+                  select = "Select"
+                }
+                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
+                date={formatDate(user.message.messageDate)} 
+                email={user.data.email} idChat={user.id} select={select}/>
+              } )} */}
+
+
+
+          </BodyStl>
         </>
     )
   }
   
   return (
     <>
-      <div className="Input">
-        <span className="SpanIcon"><BiSearch size={24} color="#999999" className="Icon"/></span>
-        <input type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
-      </div>
-      <DivFlex backgroundColor="#212329" flex="1" flexDirection="column" padding="22px" alin overflowY="auto">
-          <Text color='rgb(170, 170, 170)' fontSize="16px">{Language[language].aside.body.notFound}</Text>
-      </DivFlex>
+      <InputContainerStl>
+        <SpanIconStl>
+            <BiSearch size={24}/>
+        </SpanIconStl>
+        <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
+      </InputContainerStl>
+      <NotFoundStl >
+          <p>{Language[language].aside.body.notFound}</p>
+      </NotFoundStl>
     </>
   )
 }

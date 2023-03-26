@@ -5,8 +5,8 @@ const InfoStl = styled.div`
     flex-direction: column;
     align-items: center;
     width: 400px;
-    background-color: #1e1f25;
-    color: white;
+    background-color: ${(props) => props.theme.colors.backgroundOtherMessage};
+    color: ${(props) => props.theme.colors.primaryText};
     padding-top: 60px;
 `
 
@@ -25,7 +25,7 @@ const TitleHeaderStl = styled.h1`
 
 const TextHeaderStl = styled.p`
     padding-top: 8px;
-    color: rgb(156, 156, 156);
+    color: ${(props) => props.theme.colors.secondaryText};
     font-size: 16px;
 `
 
@@ -49,11 +49,11 @@ const CardTextsStl = styled.div`
 `
 
 const TitleCardStl = styled.h4`
-   color: white;
+   color: ${(props) => props.theme.colors.primaryText};
 `
 
 const TextCardStl = styled.p`
-    color: rgb(156, 156, 156);
+    color: ${(props) => props.theme.colors.secondaryText};
     font-size: 14px;
 `
 
