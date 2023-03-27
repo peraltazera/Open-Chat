@@ -13,7 +13,6 @@ function OtherMessage(props) {
                 }
                 <MessageStl>
                     <p>{props.msg}</p>
-                    <DateStl>{props.formatHours(props.date)}</DateStl>
                 </MessageStl>
             </ContainerMessageStl>
         </OtherStl>

@@ -7,7 +7,7 @@ const Icon = styled.span`
 
     &:hover {
         cursor: pointer;
-        color: ${(props) => props.theme.colors.backgroundMyMessage};
+        color: ${(props) => props.theme.colors.iconHover};
     }
 `
 

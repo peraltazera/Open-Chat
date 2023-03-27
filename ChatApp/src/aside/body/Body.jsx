@@ -1,13 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
-import './Body.css'
 import Card from './CardChat'
 import Context from '../../contexts/Context';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { query, collection, where, getDocs, doc, orderBy, limit } from "firebase/firestore";
+import { query, collection, where, getDocs } from "firebase/firestore";
 import { db } from "../../../services/FireBaseConfigKey";
 import { BiSearch } from 'react-icons/bi';
 import Settings  from './Settings';
-import IconDisabled from '../../styles/IconDisabled.style';
 import Language from '../../Language';
 import {BodyStl, SpanIconStl, InputStl, InputContainerStl, NotFoundStl, BodySettingsStl} from './Body.style'
 

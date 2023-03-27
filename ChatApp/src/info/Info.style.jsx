@@ -5,9 +5,10 @@ const InfoStl = styled.div`
     flex-direction: column;
     align-items: center;
     width: 400px;
-    background-color: ${(props) => props.theme.colors.backgroundOtherMessage};
-    color: ${(props) => props.theme.colors.primaryText};
+    background-color: ${(props) => props.theme.colors.chat.info.background};
+    color: ${(props) => props.theme.colors.chat.info.name};
     padding-top: 60px;
+    border-left: 2px solid ${(props) => props.theme.colors.chat.info.border};
 `
 
 const HeaderStl = styled.div`
@@ -25,7 +26,7 @@ const TitleHeaderStl = styled.h1`
 
 const TextHeaderStl = styled.p`
     padding-top: 8px;
-    color: ${(props) => props.theme.colors.secondaryText};
+    color: ${(props) => props.theme.colors.chat.info.email};
     font-size: 16px;
 `
 
@@ -49,11 +50,11 @@ const CardTextsStl = styled.div`
 `
 
 const TitleCardStl = styled.h4`
-   color: ${(props) => props.theme.colors.primaryText};
+   color: ${(props) => props.theme.colors.chat.info.card.title};
 `
 
 const TextCardStl = styled.p`
-    color: ${(props) => props.theme.colors.secondaryText};
+    color: ${(props) => props.theme.colors.chat.info.card.desc};
     font-size: 14px;
 `
 

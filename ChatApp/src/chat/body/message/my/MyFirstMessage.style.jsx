@@ -25,12 +25,12 @@ const ContainerMessageTextStl = styled.div`
 `;
 
 const MessageStl = styled.div`
-    color: ${(props) => props.theme.colors.primaryText};
+    color: ${(props) => props.theme.colors.chat.body.myMessage.message};
     margin: 10px 10px 0px 10px;
     padding: 12px 24px;
     width:fit-content;
     max-width: 100%;
-    background-color: ${(props) => props.theme.colors.backgroundMyMessage};
+    background-color: ${(props) => props.theme.colors.chat.body.myMessage.background};
     border-radius: 12px 0px 12px 12px;
     font-size: 14px;
     font-weight: 400;
@@ -42,7 +42,7 @@ const ImageStl = styled.img`
 `;
 
 const InfoStl = styled.div`
-    color: ${(props) => props.theme.colors.primaryText};
+    color: ${(props) => props.theme.colors.chat.body.myMessage.name};
     padding: 0px 12px;
     display: flex;
     align-items: center;
@@ -54,7 +54,7 @@ const InfoStl = styled.div`
 `;
 
 const DateStl = styled.p`
-    color: ${(props) => props.theme.colors.secondaryText};
+    color: ${(props) => props.theme.colors.chat.body.myMessage.date};
     font-size: 10px;
     padding: 0px;
     font-weight: 300;

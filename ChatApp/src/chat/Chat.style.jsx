@@ -3,7 +3,7 @@ import styled from "styled-components"
 const ChatStl = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: ${(props) => props.theme.colors.backgroundBodyChat};
+    /* background-color: ${(props) => props.theme.colors.backgroundBodyChat}; */
     flex: 1;
 `;
 
@@ -12,8 +12,8 @@ const InitialStl = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: ${(props) => props.theme.colors.primaryText};
-    background-color: ${(props) => props.theme.colors.backgroundBodyChat};
+    color: ${(props) => props.theme.colors.chat.initial.title};
+    background-color: ${(props) => props.theme.colors.chat.initial.background};
     flex: 1;
     font-size: 28px;
     padding-bottom: 360px;
@@ -21,7 +21,7 @@ const InitialStl = styled.div`
 
 const TextStl = styled.p`
     padding-top: 24px;
-    color: ${(props) => props.theme.colors.secondaryText};
+    color: ${(props) => props.theme.colors.chat.initial.text};
     font-size: 16px;
 `;
 

@@ -1,13 +1,14 @@
 import styled from "styled-components"
 
 const HeaderStl = styled.div`
-    background-color: ${(props) => props.theme.colors.backgroundAside};
+    background-color: ${(props) => props.theme.colors.chat.header.background};
     height: 80px;
     display: flex;
     align-items: center;
     padding: 32px;
-    border-left: solid 2px ${(props) => props.theme.colors.border};
-    border-right: solid 2px ${(props) => props.theme.colors.border};
+    border-left: solid 2px ${(props) => props.theme.colors.chat.header.sideBorder};
+    border-right: solid 2px ${(props) => props.theme.colors.chat.header.sideBorder};
+    border-bottom: solid 2px ${(props) => props.theme.colors.chat.header.bottomBorder};
     justify-content: space-between;
 `
 
@@ -25,7 +26,7 @@ const ImageStl = styled.img`
 `
 
 const TitleStl = styled.h1`
-    color: ${(props) => props.theme.colors.primaryText};
+    color: ${(props) => props.theme.colors.chat.header.text};
     padding: 0px 24px;
     font-size: 18px;
 `

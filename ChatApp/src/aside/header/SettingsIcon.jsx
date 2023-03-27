@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-// import './Header.css'
 import { AiOutlineSetting, AiOutlineClose } from 'react-icons/ai';
 import Context from '../../contexts/Context';
 import Language from '../../Language';

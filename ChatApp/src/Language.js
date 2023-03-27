@@ -94,7 +94,7 @@ const language = {
 
             },
             body: {
-                month: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                month: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Novembre", "Decembre"],
                 desc: "Un chat integrado con el sistema de correo electrónico de Google."
             },
             footer: {

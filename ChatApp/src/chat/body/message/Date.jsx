@@ -5,7 +5,7 @@ function Date(props) {
     return (
         <DateStl>
             <LineStl/>
-            <TextStl>{props.text}</TextStl>
+                <TextStl>{props.text}</TextStl>
             <LineStl/>
         </DateStl>
     )

@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 const BodyStl = styled.div`
-    background-color: ${(props) => props.theme.colors.backgroundAside};
     flex: 1;
     overflow-y: auto;
     display: flex;
@@ -9,31 +8,30 @@ const BodyStl = styled.div`
 `
 
 const NotFoundStl = styled.div`
-    background-color: ${(props) => props.theme.colors.backgroundAside};
     flex: 1;
     flex-direction: column;
     padding: 22px;
     overflow-y: auto;
-    color: ${(props) => props.theme.colors.secondaryText};
+    color: ${(props) => props.theme.colors.aside.body.text};
     font-size: 16px;
 `
 
 const SpanIconStl = styled.span`
     padding-top: 6px;
-    color: ${(props) => props.theme.colors.icon};
+    color: ${(props) => props.theme.colors.aside.body.input.icon};
 `
 
 const InputStl = styled.input`
-    color: ${(props) => props.theme.colors.primaryText};
+    color: ${(props) => props.theme.colors.aside.body.input.text};
     font-size: 18px;
     width: 100%;
-    background-color: ${(props) => props.theme.colors.inputAside};
+    background-color: ${(props) => props.theme.colors.aside.body.input.background};
     height: 46px;
     resize: none;
     border: none;
 
     &::placeholder {
-        color: ${(props) => props.theme.colors.secondaryText};
+        color: ${(props) => props.theme.colors.aside.body.input.placeholder};
     }
 
     &:focus {
@@ -43,15 +41,15 @@ const InputStl = styled.input`
     }
 
     &::selection {
-        background-color: #444444; 
-        color: ${(props) => props.theme.colors.primaryText};
-        caret-color: ${(props) => props.theme.colors.primaryText};
+        background-color: ${(props) => props.theme.colors.aside.body.input.placeholder}; 
+        color: ${(props) => props.theme.colors.aside.body.input.text};
+        caret-color: ${(props) => props.theme.colors.aside.body.input.text};
     }
 `
 
 const InputContainerStl = styled.div`
     gap: 20px;
-    background-color: ${(props) => props.theme.colors.inputAside};
+    background-color: ${(props) => props.theme.colors.aside.body.input.background};
     border-radius: 8px;
     display: flex;
     flex-direction: row;
@@ -62,7 +60,6 @@ const InputContainerStl = styled.div`
 `
 
 const BodySettingsStl = styled.div`
-    background-color: ${(props) => props.theme.colors.backgroundAside};
     flex: 1;
     flex-direction: column;
     overflow: auto;

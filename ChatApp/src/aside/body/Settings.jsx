@@ -9,6 +9,7 @@ import Switch from "react-switch";
 import dark from '../../styles/themes/dark';
 import light from '../../styles/themes/light';
 import {SettingsStl} from './Settings.style';
+import Icon from '../../styles/Icon.style';
 
 function Settings() {
 
@@ -57,7 +58,9 @@ function Settings() {
             id="material-switch"
           />
       </label>
-      <BiExit size={24} className="Icon" onClick={handleSignout}/>
+      <Icon>
+        <BiExit size={24} className="Icon" onClick={handleSignout}/>
+      </Icon>
     </SettingsStl>
   )
 }

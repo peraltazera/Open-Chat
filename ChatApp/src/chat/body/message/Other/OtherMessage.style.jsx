@@ -19,19 +19,19 @@ const ContainerMessageStl = styled.div`
 `;
 
 const MessageStl = styled.div`
-    color: ${(props) => props.theme.colors.primaryText};
+    color: ${(props) => props.theme.colors.chat.body.otherMessage.message};
     padding: 12px 24px;
     width:fit-content;
     max-width: 100%;
     border-radius: 12px 12px 12px 12px;
     font-size: 14px;
     font-weight: 400;
-    background-color: ${(props) => props.theme.colors.backgroundOtherMessage};
+    background-color: ${(props) => props.theme.colors.chat.body.otherMessage.background};
     margin: 0px 0px 0px 10px;
 `;
 
 const DateStl = styled.div`
-    color: ${(props) => props.theme.colors.secondaryText};
+    color: ${(props) => props.theme.colors.chat.body.otherMessage.date};
     font-size: 10px;
     padding: 0px 10px;
     font-weight: 300;
