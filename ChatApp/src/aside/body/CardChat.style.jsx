@@ -29,6 +29,7 @@ const InfoContainerStl = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    color: ${(props) => props.theme.colors.backgroundMyMessage};
 `;
 
 const ImageStl = styled.img`
@@ -37,10 +38,12 @@ const ImageStl = styled.img`
 `;
 
 const NumberStl = styled.p`
-    width: 20px;
-    text-align: center;
+    width: fit-content;
     background-color: ${(props) => props.theme.colors.number};
+    padding: 2px 6px 0px 6px;
     border-radius: 100px;
+    margin-top: 4px;
+    color: ${(props) => props.theme.colors.primaryText};
 `;
 
 const DateStl = styled.p`
@@ -57,6 +60,17 @@ const MessageStl = styled.p`
     color: ${(props) => props.theme.colors.secondaryText};
     font-size: 16px;
     font-weight: 100;
+    margin-top: 4px;
 `;
 
-export {CardChatStl, InfoStl, InfoContainerStl, ImageStl, NumberStl, DateStl, NameStl, MessageStl}
+const IconCheckStl = styled.span`
+    height: 24px;
+    color: ${(props) => props.theme.colors.backgroundMyMessage};
+`;
+
+const IconNoCheckStl = styled.span`
+    height: 24px;
+    color: ${(props) => props.theme.colors.icon};
+`;
+
+export {CardChatStl, InfoStl, InfoContainerStl, ImageStl, NumberStl, DateStl, NameStl, MessageStl, IconCheckStl, IconNoCheckStl}

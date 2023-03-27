@@ -7,8 +7,6 @@ import Icon from '../styles/Icon.style';
 
 function Header() {
 
-  console.log("Header Chat")
-
   const onClick = () => setInfo(!info)
   const { info, setInfo, chatUser } = useContext(Context)
 

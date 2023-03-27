@@ -9,8 +9,6 @@ import { InfoStl, HeaderStl, TitleHeaderStl, TextHeaderStl, ImageStl, CardStl, D
 
 function Info() {
 
-    console.log("Info")
-
     const { info, chatUser, language } = useContext(Context)
 
     if(info)

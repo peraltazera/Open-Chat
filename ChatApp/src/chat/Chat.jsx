@@ -7,9 +7,7 @@ import Context from '../contexts/Context';
 import Language from '../Language';
 import {ChatStl, InitialStl, TextStl, TitleStl} from './Chat.style';
 
-function Chat(props) {
-
-  console.log("Chat")
+function Chat() {
 
   const { chatUser, language } = useContext(Context)
 

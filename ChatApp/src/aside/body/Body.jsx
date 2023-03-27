@@ -13,8 +13,6 @@ import {BodyStl, SpanIconStl, InputStl, InputContainerStl, NotFoundStl, BodySett
 
 function Body() {
 
-  console.log("Body Aside")
-
   const [userList, setUserList] = useState([])
   const [emailList, setEmailList] = useState([])
   const { searchUser, myUser, setChats, chatUser, settings, inputSearchUser, setInputSearchUser, setSearchUser, language } = useContext(Context)
@@ -33,7 +31,7 @@ function Body() {
           emailList.map(user => {
           if(user.email == doc.data().email){
             // setUserList(oldArray => [...oldArray, {data: doc.data(), id: user.id, message: user.message}])
-            chatList.push({data: doc.data(), id: user.id, message: user.message})
+            chatList.push({data: doc.data(), id: user.id, message: user.message, otherNumber: user.otherNumber, myNumber: user.myNumber})
           }
         } )
       }
@@ -41,12 +39,12 @@ function Body() {
     setUserList(chatList.sort((x, y) => x.message.messageDate - y.message.messageDate).reverse())
   }
 
-  const previewMessage = message => {
+  const previewMessage = (message, letters) => {
     if(message)
     {
-      if(message.length > 16)
+      if(message.length > letters)
       {
-        message = message.slice(0, 16)
+        message = message.slice(0, letters)
         message = message.split(" ")
         if(message.length > 1){
           message.pop()
@@ -63,17 +61,39 @@ function Body() {
   const formatDate = date => {
     if(date)
     {
-      return `${date.toDate().getHours()}:${date.toDate().getMinutes()}`
+      let hours = ""
+      let minutes = ""
+      if(date.toDate().getHours().toString().length < 2)
+      {
+        hours = "0"+date.toDate().getHours().toString()
+      }
+      else
+      {
+        hours = date.toDate().getHours().toString()
+      }
+      if(date.toDate().getMinutes().toString().length < 2)
+      {
+        minutes = "0"+date.toDate().getMinutes().toString()
+      }
+      else
+      {
+        minutes = date.toDate().getMinutes().toString()
+      }
+      return `${hours}:${minutes}`
     }
     return ""
   }
 
   useEffect(() => {
+    console.log("chatsDoc")
     if(chatsDoc){
         setChats(chatsDoc)
         setEmailList(chatsDoc.map((chat) => {
-          const user = chat.user.filter(user => user != myUser.email)
-          return {email: user[0], id: chat.id, message: chat.message }
+          const otherEmail = chat.user.filter(user => user != myUser.email)
+          const myEmail = chat.user.filter(user => user == myUser.email)
+          console.log(chat[otherEmail[0].replace(/[^a-zA-Z0-9]/g, "")])
+          console.log(chat[myEmail[0].replace(/[^a-zA-Z0-9]/g, "")])
+          return {email: otherEmail[0], id: chat.id, message: chat.message, otherNumber: chat[otherEmail[0].replace(/[^a-zA-Z0-9]/g, "")], myNumber: chat[myEmail[0].replace(/[^a-zA-Z0-9]/g, "")] }
         }))
     }
   }, [chatsDoc]);
@@ -128,7 +148,7 @@ function Body() {
           <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
         </InputContainerStl>
         <BodyStl>
-            <Card num={0} name={searchUser.name} photo={searchUser.photo} status={"Online"} date={14} email={searchUser.email} />
+            <Card num={""} name={searchUser.name} photo={searchUser.photo} status={previewMessage("Start Chat" , 24)} date={""} email={searchUser.email} />
         </BodyStl>
       </>
     )
@@ -150,7 +170,7 @@ function Body() {
                 if(user.id == chatUser.id){
                   select = "Select"
                 }
-                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
+                return <Card key={id} otherNumber={user.otherNumber} myNumber={user.myNumber} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message, 16)} 
                 date={formatDate(user.message.messageDate)} 
                 email={user.data.email} idChat={user.id} select={select}/>
               } )}
@@ -167,6 +187,24 @@ function Body() {
                 email={user.data.email} idChat={user.id} select={select}/>
               } )}
               {userList.map((user, id) => {
+                let select = ""
+                if(user.id == chatUser.id){
+                  select = "Select"
+                }
+                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
+                date={formatDate(user.message.messageDate)} 
+                email={user.data.email} idChat={user.id} select={select}/>
+              } )}
+                {userList.map((user, id) => {
+                let select = ""
+                if(user.id == chatUser.id){
+                  select = "Select"
+                }
+                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
+                date={formatDate(user.message.messageDate)} 
+                email={user.data.email} idChat={user.id} select={select}/>
+              } )}
+                {userList.map((user, id) => {
                 let select = ""
                 if(user.id == chatUser.id){
                   select = "Select"

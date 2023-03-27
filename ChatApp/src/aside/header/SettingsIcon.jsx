@@ -7,8 +7,6 @@ import Icon from '../../styles/Icon.style';
 
 function SettingsIcon() {
 
-  console.log("SettingsIcon Aside")
-
   const { settings, setSettings, setTitle, language } = useContext(Context)
 
   const Settings = () => {

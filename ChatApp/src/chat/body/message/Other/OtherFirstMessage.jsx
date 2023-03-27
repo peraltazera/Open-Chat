@@ -1,7 +1,7 @@
 // import './FirstMessage.css'
 import {FirstStl, ContainerMessageStl, ContainerMessageTextStl, MessageStl, ImageStl, InfoStl, DateStl} from './OtherFirstMessage.style';
 
-function FirstMessage(props) {
+function OtherFirstMessage(props) {
     return (
         <FirstStl>
             <ImageStl src={props.photo} alt="Logo" />
@@ -11,7 +11,7 @@ function FirstMessage(props) {
                     {/* <p className="Date">{`${props.date.toDate().getUTCHours()}:${props.date.toDate().getUTCMinutes()}`}</p> */}
                 </InfoStl>
                 <ContainerMessageTextStl>
-                    <DateStl>{`${props.date.toDate().getHours()}:${props.date.toDate().getMinutes()}`}</DateStl>
+                    <DateStl>{props.formatHours(props.date)}</DateStl>
                     <MessageStl>
                         <p>{props.msg}</p>
                     </MessageStl>
@@ -21,4 +21,4 @@ function FirstMessage(props) {
     )
 }
 
-export default FirstMessage
+export default OtherFirstMessage

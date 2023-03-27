@@ -20,7 +20,7 @@ const language = {
 
             },
             body: {
-                month: "March",
+                month: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                 desc: "A chat integrated with the google email system"
             },
             footer: {
@@ -57,7 +57,7 @@ const language = {
 
             },
             body: {
-                month: "Março",
+                month: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
                 desc: "Um chat integrado com o sistema de email do google"
             },
             footer: {
@@ -94,7 +94,7 @@ const language = {
 
             },
             body: {
-                month: "Marzo",
+                month: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
                 desc: "Un chat integrado con el sistema de correo electrónico de Google."
             },
             footer: {

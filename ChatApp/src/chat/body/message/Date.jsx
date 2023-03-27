@@ -2,8 +2,6 @@ import {DateStl, LineStl, TextStl} from './Date.style';
 
 function Date(props) {
 
-    console.log("Date Chat")
-
     return (
         <DateStl>
             <LineStl/>

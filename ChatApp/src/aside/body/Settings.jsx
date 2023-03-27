@@ -12,8 +12,6 @@ import {SettingsStl} from './Settings.style';
 
 function Settings() {
 
-  console.log("Settings")
-
   const { language, setLanguage, setTitle, checked, setChecked, theme, setTheme } = useContext(Context)
 
   const handleSignout = () => {

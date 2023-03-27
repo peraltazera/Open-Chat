@@ -7,8 +7,6 @@ import { LoginStl, BtnGoogleStl, TitleStl, TextBtnGoogleStl } from './Login.styl
 
 function Login() {
 
-    console.log("Login")
-
     const { setChatUser, setMessages, setSettings, setInfo } = useContext(Context)
 
     const handleSignin = () => {

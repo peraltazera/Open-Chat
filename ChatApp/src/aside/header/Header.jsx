@@ -6,8 +6,6 @@ import {HeaderStl, TitleStl} from './Header.style';
 
 function Header() {
 
-  console.log("Header Aside")
-
   const { title } = useContext(Context)
 
   return (

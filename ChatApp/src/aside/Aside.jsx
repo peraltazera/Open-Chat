@@ -6,8 +6,6 @@ import AsideStl from './Aside.style';
 
 function Aside() {
 
-  console.log("Aside")
-
   return (
     <AsideStl className="Aside">
       <Header />

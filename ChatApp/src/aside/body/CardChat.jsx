@@ -1,19 +1,19 @@
 import { useContext } from 'react'
 // import './CardChat.css'
 import img from '../../assets/Victor.png';
-import { doc, setDoc } from "firebase/firestore";
+import { BsCheckCircle, BsCheck, BsCheckAll } from 'react-icons/bs';
+import { AiFillCheckCircle } from 'react-icons/ai';
+import { doc, setDoc, Timestamp } from "firebase/firestore";
 import Context from '../../contexts/Context';
 import { db } from "../../../services/FireBaseConfigKey";
 import DivFlex from '../../styles/DivFlex.style';
 import Image from '../../styles/Image.style';
 import Text from '../../styles/Text.style';
-import {CardChatStl, InfoStl, InfoContainerStl, ImageStl, NumberStl, DateStl, NameStl, MessageStl} from './CardChat.style'
+import {CardChatStl, InfoStl, InfoContainerStl, ImageStl, NumberStl, DateStl, NameStl, MessageStl, IconCheckStl, IconNoCheckStl} from './CardChat.style'
 
 function CardChat(props) {
 
-  console.log("CardChat")
-
-  const { myUser, setChatUser, chatUser, chats, setInputSearchUser, setInfo, setlimitMessages, setMaxMessages } = useContext(Context)
+  const { myUser, setChatUser, chatUser, chats, setInputSearchUser, setInfo, setlimitMessages } = useContext(Context)
 
   const CreateChat = async () => {    
         let createChat = true  
@@ -32,9 +32,9 @@ function CardChat(props) {
             message: {
               name: "",
               email: "",
-              message: "",
+              message: "Start Chat",
               photo: "",
-              messageDate: ""
+              messageDate: Timestamp.fromDate(new Date())
             },
             [myUser.email.replace(/[^a-zA-Z0-9]/g, "")]: 0,
             [props.email.replace(/[^a-zA-Z0-9]/g, "")]: 0
@@ -58,8 +58,10 @@ function CardChat(props) {
         setInputSearchUser("")
   };
 
-  return (
-    <CardChatStl className={`CardChat ${props.select}`} onClick={CreateChat}>
+  if(props.date)
+  {
+    return (
+      <CardChatStl className={`CardChat ${props.select}`} onClick={CreateChat}>
         <ImageStl height="60px" borderRadius="100px" src={props.photo || img} alt="Logo" />
         <InfoStl flexDirection="column" gap="6px" padding="0px 14px">
           <InfoContainerStl justifyContent="space-between">
@@ -68,11 +70,34 @@ function CardChat(props) {
           </InfoContainerStl>
           <InfoContainerStl justifyContent="space-between">
             <MessageStl color="rgb(156, 156, 156)">{props.status}</MessageStl>
-            <NumberStl className="Number">{props.num}</NumberStl>
+            {
+              props.otherNumber 
+              ? <NumberStl className="Number">{props.otherNumber}</NumberStl> 
+              : props.myNumber
+              ? <IconNoCheckStl><BsCheckAll size={24} /></IconNoCheckStl>
+              : <IconCheckStl><BsCheckAll size={24} /></IconCheckStl>
+            }
           </InfoContainerStl>
         </InfoStl>
-    </CardChatStl>
-  )
+      </CardChatStl>
+    )
+  }
+  else
+  {
+    return (
+      <CardChatStl className={`CardChat ${props.select}`} onClick={CreateChat}>
+          <ImageStl height="60px" borderRadius="100px" src={props.photo || img} alt="Logo" />
+          <InfoStl flexDirection="column" gap="6px" padding="0px 14px">
+            <InfoContainerStl justifyContent="space-between">
+              <NameStl>{props.name}</NameStl>
+            </InfoContainerStl>
+            <InfoContainerStl justifyContent="space-between">
+              <MessageStl color="rgb(156, 156, 156)">{props.status}</MessageStl>
+            </InfoContainerStl>
+          </InfoStl>
+      </CardChatStl>
+    )
+  }
 }
 
 export default CardChat

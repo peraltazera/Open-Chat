@@ -15,8 +15,6 @@ import { LoadStl, TitleStl } from './App.style';
 
 function App() {
 
-    console.log("App")
-
     const [user, loading] = useAuthState(auth)
     const [info, setInfo] = useState(false)
     const [searchUser, setSearchUser] = useState("")

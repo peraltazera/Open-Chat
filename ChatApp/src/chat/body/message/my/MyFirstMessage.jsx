@@ -11,7 +11,7 @@ function FirstMessage(props) {
                     {/* <p className="Date">{`${props.date.toDate().getUTCHours()}:${props.date.toDate().getUTCMinutes()}`}</p> */}
                 </InfoStl>
                 <ContainerMessageTextStl>
-                    <DateStl>{`${props.date.toDate().getHours()}:${props.date.toDate().getMinutes()}`}</DateStl>
+                    <DateStl>{props.formatHours(props.date)}</DateStl>
                     <MessageStl>
                         <p>{props.msg}</p>
                     </MessageStl>

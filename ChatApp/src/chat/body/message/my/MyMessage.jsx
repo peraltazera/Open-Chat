@@ -6,7 +6,11 @@ function OtherMessage(props) {
         <MyMessageStl>
             {/* <img src={props.photo} alt="Logo" /> */}
             <ContainerMessageStl>
-                <DateStl>{`${props.date.toDate().getHours()}:${props.date.toDate().getMinutes()}`}</DateStl>
+                {
+                    props.date.toDate().getMinutes() != props.lastDate.toDate().getMinutes() 
+                    ? <DateStl>{props.formatHours(props.date)}</DateStl>
+                    : null
+                }
                 <MessageStl>
                     <p>{props.msg}</p>
                 </MessageStl>
