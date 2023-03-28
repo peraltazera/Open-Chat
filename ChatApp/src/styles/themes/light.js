@@ -49,6 +49,14 @@ export default {
                 text: "#1E1F25",
                 icon: "#282932",
                 iconHover: "#2176FF",
+                language: {
+                    background: "#E7E7E7",
+                    text: "#1E1F25",
+                },
+                logout: {
+                    text: "#1E1F25",
+                    hover: "#BE4C50",
+                },
             }
         },
         chat: {

@@ -8,9 +8,10 @@ const BodyStl = styled.div`
 `
 
 const NotFoundStl = styled.div`
-    flex: 1;
-    flex-direction: column;
-    padding: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
     overflow-y: auto;
     color: ${(props) => props.theme.colors.aside.body.text};
     font-size: 16px;

@@ -83,14 +83,11 @@ function Body() {
   }
 
   useEffect(() => {
-    console.log("chatsDoc")
     if(chatsDoc){
         setChats(chatsDoc)
         setEmailList(chatsDoc.map((chat) => {
           const otherEmail = chat.user.filter(user => user != myUser.email)
           const myEmail = chat.user.filter(user => user == myUser.email)
-          console.log(chat[otherEmail[0].replace(/[^a-zA-Z0-9]/g, "")])
-          console.log(chat[myEmail[0].replace(/[^a-zA-Z0-9]/g, "")])
           return {email: otherEmail[0], id: chat.id, message: chat.message, otherNumber: chat[otherEmail[0].replace(/[^a-zA-Z0-9]/g, "")], myNumber: chat[myEmail[0].replace(/[^a-zA-Z0-9]/g, "")] }
         }))
     }
@@ -101,14 +98,32 @@ function Body() {
   }, [emailList]);
 
   const validate = (email) => {
-    let res = false;
+    let res;
     let re = /\S+@\S+\.\S+/;
     res = re.test(email)
     return re.test(email);
   }
 
   useEffect(() => {
-    if(validate(inputSearchUser)){
+    const chatExists = userList.filter(user => {
+      if(inputSearchUser.trim())
+      {
+        if(user.data.email.toLowerCase().search(inputSearchUser.toLowerCase()) != -1)
+        {
+          return user
+        }
+        else if(user.data.name.toLowerCase().search(inputSearchUser.toLowerCase()) != -1)
+        {
+          return user
+        }
+      }
+    })
+    if(chatExists[0])
+    {
+      setSearchUser(chatExists)
+    }
+    else if(validate(inputSearchUser))
+    {
       const q = query(collection(db, "users"), where("email", "==", inputSearchUser));
       const fetchData = async () => {
         const test = await getDocs(q)
@@ -146,8 +161,32 @@ function Body() {
           <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
         </InputContainerStl>
         <BodyStl>
-            <Card num={""} name={searchUser.name} photo={searchUser.photo} status={previewMessage("Start Chat" , 24)} date={""} email={searchUser.email} />
+              {
+                searchUser.length > 0
+                ? searchUser.map((user, id) => {
+                  if(user)
+                  return <Card key={id} otherNumber={user.otherNumber} myNumber={user.myNumber} name={user.data.name} photo={user.data.photo} 
+                  status={previewMessage(user.message.message, 16)} date={formatDate(user.message.messageDate)} email={user.data.email} idChat={user.id}/>})
+                : <Card num={""} name={searchUser.name} photo={searchUser.photo} status={previewMessage("Start Chat" , 24)} date={""} email={searchUser.email} />
+              }
         </BodyStl>
+      </>
+    )
+  }
+
+  if(inputSearchUser)
+  {
+    return (
+      <>
+        <InputContainerStl>
+          <SpanIconStl>
+              <BiSearch size={24}/>
+          </SpanIconStl>
+          <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
+        </InputContainerStl>
+        <NotFoundStl >
+            <p>{Language[language].aside.body.notFoundUser}</p>
+        </NotFoundStl>
       </>
     )
   }
@@ -162,7 +201,7 @@ function Body() {
             <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
           </InputContainerStl>
           <BodyStl>
-
+              
               {userList.map((user, id) => {
                 let select = ""
                 if(user.id == chatUser.id){
@@ -175,7 +214,7 @@ function Body() {
 
 
 
-              {/* {userList.map((user, id) => {
+              {userList.map((user, id) => {
                 let select = ""
                 if(user.id == chatUser.id){
                   select = "Select"
@@ -210,7 +249,7 @@ function Body() {
                 return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
                 date={formatDate(user.message.messageDate)} 
                 email={user.data.email} idChat={user.id} select={select}/>
-              } )} */}
+              } )}
 
 
 
@@ -218,20 +257,6 @@ function Body() {
         </>
     )
   }
-  
-  return (
-    <>
-      <InputContainerStl>
-        <SpanIconStl>
-            <BiSearch size={24}/>
-        </SpanIconStl>
-        <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
-      </InputContainerStl>
-      <NotFoundStl >
-          <p>{Language[language].aside.body.notFound}</p>
-      </NotFoundStl>
-    </>
-  )
 }
 
 export default Body

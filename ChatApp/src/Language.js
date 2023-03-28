@@ -7,7 +7,7 @@ const language = {
             },
             body: {
                 input: "Search or start a new chat",
-                NotFound: "User not found!"
+                notFoundUser: "User not found!"
             },
             settings: {
                 language: "Language",
@@ -44,7 +44,7 @@ const language = {
             },
             body: {
                 input: "Procure ou inicie um novo chat",
-                notFound: "Usuário não encontrado!"
+                notFoundUser: "Usuário não encontrado!"
             },
             settings: {
                 language: "Idioma",
@@ -81,7 +81,7 @@ const language = {
             },
             body: {
                 input: "Buscar o iniciar un nuevo chat",
-                notFound: "¡Usuario no encontrado!"
+                notFoundUser: "¡Usuario no encontrado!"
             },
             settings: {
                 language: "Idioma",

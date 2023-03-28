@@ -8,7 +8,7 @@ import Language from '../../Language';
 import Switch from "react-switch";
 import dark from '../../styles/themes/dark';
 import light from '../../styles/themes/light';
-import {SettingsStl} from './Settings.style';
+import {SettingsStl,SelectStl,SelectContainerStl,SwitchContainerStl,SwitchStl,LogoutStl,OptionStl} from './Settings.style';
 import Icon from '../../styles/Icon.style';
 
 function Settings() {
@@ -31,35 +31,41 @@ function Settings() {
 
   return (
     <SettingsStl>
-      <label for="cars">{Language[language].aside.settings.language}: 
-        <select value={language} onChange={e => changeLanguage(e)} >
-          <option value="english">english</option>
-          <option value="portuguese">portuguese</option>
-          <option value="spanish">spanish</option>
-        </select>
-      </label>
-      <label htmlFor="material-switch">
+      <SelectContainerStl for="cars">
+        {Language[language].aside.settings.language}: 
+        <SelectStl value={language} onChange={e => changeLanguage(e)} >
+          <OptionStl value="english">english</OptionStl>
+          <OptionStl value="portuguese">portuguese</OptionStl>
+          <OptionStl value="spanish">spanish</OptionStl>
+        </SelectStl>
+      </SelectContainerStl>
+      <SwitchContainerStl htmlFor="material-switch">
           <span>{theme.title == "light" ? Language[language].aside.settings.light : Language[language].aside.settings.dark}: </span>
-          <Switch
-            checked={checked}
-            onChange={handleChange}
-            onColor="#cfcfcf"
-            onHandleColor="#e2e2e2"
-            offColor="#525252"
-            offHandleColor="#424242"
-            handleDiameter={22}
-            uncheckedIcon={false}
-            checkedIcon={false}
-            boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-            activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-            height={14}
-            width={36}
-            className="react-switch"
-            id="material-switch"
-          />
-      </label>
+          <SwitchStl>
+            <Switch
+              checked={checked}
+              onChange={handleChange}
+              onColor="#525252"
+              onHandleColor="#424242"
+              offColor="#cfcfcf"
+              offHandleColor="#e2e2e2"
+              handleDiameter={22}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
+              activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
+              height={14}
+              width={36}
+              className="react-switch"
+              id="material-switch"
+            />
+          </SwitchStl>
+      </SwitchContainerStl>
       <Icon>
-        <BiExit size={24} className="Icon" onClick={handleSignout}/>
+        <LogoutStl onClick={handleSignout} >
+          Logout
+          <BiExit size={18} className="Icon" onClick={handleSignout}/>
+        </LogoutStl>
       </Icon>
     </SettingsStl>
   )
