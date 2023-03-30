@@ -6,6 +6,7 @@ import MyMessage from './my/MyMessage'
 import OtherMessage from './other/OtherMessage'
 import Date from './Date'
 import Language from '../../../Language'
+//other
 
 function Message(props) {
     
