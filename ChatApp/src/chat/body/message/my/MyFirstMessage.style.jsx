@@ -34,6 +34,8 @@ const MessageStl = styled.div`
     border-radius: 12px 0px 12px 12px;
     font-size: 14px;
     font-weight: 400;
+    white-space: pre-line;
+    word-wrap: break-word;
 `;
 
 const ImageStl = styled.img`

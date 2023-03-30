@@ -28,6 +28,8 @@ const MessageStl = styled.div`
     font-weight: 400;
     background-color: ${(props) => props.theme.colors.chat.body.otherMessage.background};
     margin: 0px 0px 0px 10px;
+    white-space: pre-line;
+    word-wrap: break-word;
 `;
 
 const DateStl = styled.div`

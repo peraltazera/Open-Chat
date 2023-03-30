@@ -34,6 +34,8 @@ const MessageStl = styled.div`
     font-weight: 400;
     background-color: ${(props) => props.theme.colors.chat.body.otherMessage.background};
     border-radius: 0px 12px 12px 12px;
+    white-space: pre-line;
+    word-wrap: break-word;
 `;
 
 const ImageStl = styled.img`
