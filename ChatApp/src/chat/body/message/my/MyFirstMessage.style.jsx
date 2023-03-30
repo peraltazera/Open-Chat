@@ -3,7 +3,7 @@ import styled from "styled-components"
 const FirstStl = styled.div`
     display: flex;
     width: 100%;
-    padding: 0px 0px;
+    padding: 0px 20px;
     margin-bottom: 10px;
     flex-direction: row-reverse;
     justify-content: end;
@@ -28,8 +28,8 @@ const MessageStl = styled.div`
     color: ${(props) => props.theme.colors.chat.body.myMessage.message};
     margin: 10px 10px 0px 10px;
     padding: 12px 24px;
-    width:fit-content;
-    max-width: 100%;
+    width: fit-content;
+    max-width: 800px;
     background-color: ${(props) => props.theme.colors.chat.body.myMessage.background};
     border-radius: 12px 0px 12px 12px;
     font-size: 14px;

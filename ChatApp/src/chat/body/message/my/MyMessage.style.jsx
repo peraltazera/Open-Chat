@@ -3,7 +3,7 @@ import styled from "styled-components"
 const MyMessageStl = styled.div`
     display: flex;
     width: 100%;
-    padding: 0px 40px;
+    padding: 0px 60px;
     margin-bottom: 10px;
     flex-direction: row-reverse;
     justify-content: end;

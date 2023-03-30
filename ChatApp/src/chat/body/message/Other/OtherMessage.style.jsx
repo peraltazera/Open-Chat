@@ -3,7 +3,7 @@ import styled from "styled-components"
 const OtherStl = styled.div`
     display: flex;
     width: 100%;
-    padding: 0px 40px;
+    padding: 0px 60px;
     margin-bottom: 10px;
     flex-direction: row;
     justify-content: start;
@@ -21,8 +21,8 @@ const ContainerMessageStl = styled.div`
 const MessageStl = styled.div`
     color: ${(props) => props.theme.colors.chat.body.otherMessage.message};
     padding: 12px 24px;
-    width:fit-content;
-    max-width: 100%;
+    width: fit-content;
+    max-width: 20px;
     border-radius: 12px 12px 12px 12px;
     font-size: 14px;
     font-weight: 400;
