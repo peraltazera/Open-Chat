@@ -1,12 +1,11 @@
 import { useContext } from 'react'
 import Context from '../../../contexts/Context'
 import MyFirstMessage from './my/MyFirstMessage'
-import OtherFirstMessage from './other/OtherFirstMessage'
+import OtherFirstMessage from './Other/OtherFirstMessage'
 import MyMessage from './my/MyMessage'
-import OtherMessage from './other/OtherMessage'
+import OtherMessage from './Other/OtherMessage'
 import Date from './Date'
 import Language from '../../../Language'
-//other
 
 function Message(props) {
     
