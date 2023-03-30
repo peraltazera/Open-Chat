@@ -1,24 +1,25 @@
-import { useEffect, useRef, useContext, useState } from 'react'
+import { useEffect, useRef, useContext } from 'react'
 import Message from './message/Message'
 import Date from './message/Date'
-import { collection, query, updateDoc, limit, collectionGroup, doc, orderBy, getCountFromServer } from "firebase/firestore";
-import { db } from "../../../services/FireBaseConfigKey";
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import Context from '../../contexts/Context';
-import {BodyStl, ButtonStl} from './Body.style';
+import { collection, query, updateDoc, limit, doc, orderBy, getCountFromServer } from "firebase/firestore"
+import { db } from "../../../services/FireBaseConfigKey"
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import Context from '../../contexts/Context'
+import {BodyStl, ButtonStl} from './Body.style'
 import Language from '../../Language'
 
 function Body() {
 
-  const { chatUser, messages, setMessages, limitMessages, setlimitMessages, changeLimitMessages, setChangeLimitMessages, maxMessages, setMaxMessages, language } = useContext(Context)
+  const { chatUser, messages, setMessages, limitMessages, setlimitMessages, changeLimitMessages, setChangeLimitMessages, 
+    maxMessages, setMaxMessages, language, textareaHeight } = useContext(Context)
   const refBody = useRef(null)
 
-  const chatsQuery = query(collection(doc(db, "Chats", chatUser.id), "Messages"), orderBy("messageDate", "desc"), limit(limitMessages));
+  const chatsQuery = query(collection(doc(db, "Chats", chatUser.id), "Messages"), orderBy("messageDate", "desc"), limit(limitMessages))
   const [messagesDoc] = useCollectionData(chatsQuery)
 
   const CreateChat = async () => { 
-    const coll = collection(doc(db, "Chats", chatUser.id), "Messages");
-    const snapshot = await getCountFromServer(coll);
+    const coll = collection(doc(db, "Chats", chatUser.id), "Messages")
+    const snapshot = await getCountFromServer(coll)
     setMaxMessages(snapshot.data().count)
   }
 
@@ -36,7 +37,7 @@ function Body() {
         setMessages([])
       }
     }
-  }, [messagesDoc]);
+  }, [messagesDoc])
 
   useEffect (() => {
     if(changeLimitMessages){
@@ -49,7 +50,7 @@ function Body() {
     {
       CreateChat()
     }
-  }, [messages])
+  }, [messages, textareaHeight])
 
   const MoreMessages = () => {
     CreateChat()
@@ -86,14 +87,14 @@ function Body() {
   if(messages == [] || !messages)
   {
     return (
-      <BodyStl className="Body" ref={refBody}>
+      <BodyStl ref={refBody}>
           <Date text="March 4, 2023"/>
       </BodyStl>
     )
   }
 
   return (
-    <BodyStl className="Body" ref={refBody}>
+    <BodyStl ref={refBody}>
         {maxMessages > limitMessages ? <ButtonStl onClick={MoreMessages}>More messages</ButtonStl> : null}
         {messages[0] ? <Date text= {`${Language[language].chat.body.month[messages[0].messageDate.toDate().getMonth()]} ${messages[0].messageDate.toDate().getDate()}, 
         ${messages[0].messageDate.toDate().getFullYear()}`}/> : null}

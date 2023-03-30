@@ -1,23 +1,25 @@
+import Background from "../../assets/LightLogin.png"
+
 export default {
     title: "light",
-
-    // colors: {
-    //     border: "#1B1C23",
-    //     secondaryText: "#8E8E8E",
-    //     backgroundBodyChat: "#131517",
-    //     primaryText: "#FFFFFF",
-    //     backgroundAside: "#212329",
-    //     number: "#BE4C50",
-    //     icon: "#999999",
-    //     inputAside: "#15161A",
-    //     backgroundOtherMessage: "#1E1F25",
-    //     backgroundMyMessage: "#296EFF",
-    //     backgroundFooterChat: "#282932",
-    // }
 
     colors: {
         icon: "#999999",
         iconHover: "#2176FF",
+        load: {
+            background: "#FFFFFF",
+            text: "#282932",
+        },
+        login: {
+            background: "#FFFFFF",
+            backgroundImage: Background,
+            firstTitle: "#2176FF",
+            endTitle: "#282932",
+            input: {
+                background: "#282932",
+                text: "#FFFFFF",
+            },
+        },
         aside: {
             background: "#FCFCFC",
             border: "#F6F6F6",
@@ -36,6 +38,8 @@ export default {
                 },
                 card: {
                     backgroundCard: "#FFFFFF",
+                    backgroundHover: "rgb(33, 118, 255,0.06)",
+                    backgroundSelect: "rgb(33, 118, 255,0.1)",
                     name: "#1E1F25",
                     message: "#8E8E8E",
                     date: "#8E8E8E",

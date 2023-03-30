@@ -4,7 +4,7 @@ const BodyStl = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: 20px;
+    padding-top: 8px;
     background-color: ${(props) => props.theme.colors.chat.body.background};
     flex: 1;
     overflow-y: auto;

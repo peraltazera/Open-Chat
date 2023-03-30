@@ -6,22 +6,30 @@ const LoginStl = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: #131517;
+    background-color: ${(props) => props.theme.colors.login.background};
+    background-image: url(${(props) => props.theme.colors.login.backgroundImage});
     color: white;
     font-size: 32px;
     gap: 40px;
 `
 
 const TitleStl = styled.h1`
-   color: #fff;
+   color: ${(props) => props.theme.colors.login.endTitle};
    font-size: 60px;
-   font-weight: 300;
+   font-weight: 600;
+   display: flex;
+`
+
+const BlueTitleStl = styled.h1`
+   color: ${(props) => props.theme.colors.login.firstTitle};
+   font-size: 60px;
+   font-weight: 600;
 `
 
 const BtnGoogleStl = styled.button`
     display: flex;
     flex-direction: row;
-    background-color: white;
+    background-color: ${(props) => props.theme.colors.login.input.background};
     align-items: center;
     border-radius: 8px;
     padding: 10px 20px;
@@ -34,9 +42,9 @@ const BtnGoogleStl = styled.button`
 `
 
 const TextBtnGoogleStl = styled.p`
-   color: rgb(66, 66, 66);
+   color: ${(props) => props.theme.colors.login.input.text};
    font-size: 14px;
    font-weight: 800;
 `
 
-export { LoginStl, BtnGoogleStl, TitleStl, TextBtnGoogleStl }
+export { LoginStl, BtnGoogleStl, TitleStl, TextBtnGoogleStl, BlueTitleStl }

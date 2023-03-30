@@ -1,10 +1,8 @@
-// import './OtherMessage.css'
 import {OtherStl, ContainerMessageStl, MessageStl, DateStl} from './OtherMessage.style'
 
 function OtherMessage(props) {
     return (
         <OtherStl>
-            {/* <img src={props.photo} alt="Logo" /> */}
             <ContainerMessageStl>
                 {
                     props.date.toDate().getMinutes() != props.lastDate.toDate().getMinutes() 

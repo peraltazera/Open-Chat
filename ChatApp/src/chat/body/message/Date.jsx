@@ -1,4 +1,4 @@
-import {DateStl, LineStl, TextStl} from './Date.style';
+import {DateStl, LineStl, TextStl} from './Date.style'
 
 function Date(props) {
 

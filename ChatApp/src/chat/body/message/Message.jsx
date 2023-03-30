@@ -1,7 +1,5 @@
 import { useContext } from 'react'
-import Context from '../../../contexts/Context';
-// import FirstMessage from '../FirstMessage'
-// import OtherMessage from '../OtherMessage'
+import Context from '../../../contexts/Context'
 import MyFirstMessage from './my/MyFirstMessage'
 import OtherFirstMessage from './other/OtherFirstMessage'
 import MyMessage from './my/MyMessage'

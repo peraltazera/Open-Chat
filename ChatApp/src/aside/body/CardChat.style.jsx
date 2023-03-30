@@ -7,14 +7,25 @@ const CardChatStl = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: ${(props) => props.theme.colors.primaryText};
     border-radius: 8px;
     border: none;
 
     &:hover {
-        background-color: rgb(255, 255, 255,0.06);
+        background-color: ${(props) => props.theme.colors.aside.body.card.backgroundHover};
         cursor: pointer;
     }
+`;
+
+const CardChatSelectStl = styled.div`
+    height: 80px;
+    padding: 46px 20px;
+    margin: 8px 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 8px;
+    border: none;
+    background-color: ${(props) => props.theme.colors.aside.body.card.backgroundSelect};
 `;
 
 const InfoStl = styled.div`
@@ -72,4 +83,4 @@ const IconNoCheckStl = styled.span`
     color: ${(props) => props.theme.colors.aside.body.card.iconDisabled};
 `;
 
-export {CardChatStl, InfoStl, InfoContainerStl, ImageStl, NumberStl, DateStl, NameStl, MessageStl, IconCheckStl, IconNoCheckStl}
+export {CardChatStl, InfoStl, InfoContainerStl, ImageStl, NumberStl, DateStl, NameStl, MessageStl, IconCheckStl, IconNoCheckStl, CardChatSelectStl}

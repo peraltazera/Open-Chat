@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { AiOutlineSetting, AiOutlineClose } from 'react-icons/ai';
-import Context from '../../contexts/Context';
-import Language from '../../Language';
-import Icon from '../../styles/Icon.style';
+import { AiOutlineSetting, AiOutlineClose } from 'react-icons/ai'
+import Context from '../../contexts/Context'
+import Language from '../../Language'
+import Icon from '../../styles/Icon.style'
 
 function SettingsIcon() {
 

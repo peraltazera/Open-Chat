@@ -1,9 +1,8 @@
 import { useContext } from 'react'
-import { BiSearch } from 'react-icons/bi';
-import Context from '../contexts/Context';
-import { HeaderStl, InfoStl, ImageStl, TitleStl } from './Header.styles';
-import IconDisabled from '../styles/IconDisabled.style';
-import Icon from '../styles/Icon.style';
+import { BiSearch } from 'react-icons/bi'
+import Context from '../contexts/Context'
+import { HeaderStl, InfoStl, ImageStl, TitleStl } from './Header.styles'
+import IconDisabled from '../styles/IconDisabled.style'
 
 function Header() {
 

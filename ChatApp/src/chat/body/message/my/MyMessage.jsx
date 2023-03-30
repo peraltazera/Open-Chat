@@ -1,5 +1,4 @@
-//import './OtherMessage.css'
-import {MyMessageStl, ContainerMessageStl, MessageStl, DateStl} from './MyMessage.style';
+import {MyMessageStl, ContainerMessageStl, MessageStl, DateStl} from './MyMessage.style'
 
 function OtherMessage(props) {
     return (
@@ -12,7 +11,7 @@ function OtherMessage(props) {
                     : null
                 }
                 <MessageStl>
-                    <p>{props.msg}</p>
+                    <p>{props.msg}<br /></p>
                 </MessageStl>
             </ContainerMessageStl>
         </MyMessageStl>

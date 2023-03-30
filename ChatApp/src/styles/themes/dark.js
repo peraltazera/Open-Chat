@@ -1,23 +1,25 @@
+import Background from "../../assets/DarkLogin.png"
+
 export default {
     title: "dark",
-
-    // colors: {
-    //     border: "#1B1C23",
-    //     secondaryText: "#8E8E8E",
-    //     backgroundBodyChat: "#131517",
-    //     primaryText: "#FFFFFF",
-    //     backgroundAside: "#212329",
-    //     number: "#BE4C50",
-    //     icon: "#999999",
-    //     inputAside: "#15161A",
-    //     backgroundOtherMessage: "#1E1F25",
-    //     backgroundMyMessage: "#296EFF",
-    //     backgroundFooterChat: "#282932",
-    // },
 
     colors: {
         icon: "#999999",
         iconHover: "#2176FF",
+        load: {
+            background: "#131517",
+            text: "#FFFFFF",
+        },
+        login: {
+            background: "#131517",
+            backgroundImage: Background,
+            firstTitle: "#2176FF",
+            endTitle: "#FFFFFF",
+            input: {
+                background: "#FFFFFF",
+                text: "#212329",
+            },
+        },
         aside: {
             background: "#212329",
             border: "#212329",
@@ -36,6 +38,8 @@ export default {
                 },
                 card: {
                     backgroundCard: "#212329",
+                    backgroundHover: "rgb(255, 255, 255,0.06)",
+                    backgroundSelect: "rgb(255, 255, 255,0.1)",
                     name: "#FFFFFF",
                     message: "#8E8E8E",
                     date: "#8E8E8E",

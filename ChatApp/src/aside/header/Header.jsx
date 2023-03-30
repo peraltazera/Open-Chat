@@ -1,15 +1,14 @@
 import { useContext } from 'react'
-// import './Header.css'
-import Context from '../../contexts/Context';
+import Context from '../../contexts/Context'
 import SettingsIcon from './SettingsIcon'
-import {HeaderStl, TitleStl} from './Header.style';
+import {HeaderStl, TitleStl} from './Header.style'
 
 function Header() {
 
   const { title } = useContext(Context)
 
   return (
-    <HeaderStl className="Header">
+    <HeaderStl>
           <TitleStl>{title}</TitleStl>
           <SettingsIcon />
     </HeaderStl>

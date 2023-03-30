@@ -1,11 +1,10 @@
 import { useContext } from 'react'
-// import './Chat.css'
 import Header from './Header'
 import Body from './body/Body'
 import Footer from './Footer'
-import Context from '../contexts/Context';
-import Language from '../Language';
-import {ChatStl, InitialStl, TextStl, TitleStl} from './Chat.style';
+import Context from '../contexts/Context'
+import Language from '../Language'
+import {ChatStl, InitialStl, TextStl, TitleStl} from './Chat.style'
 
 function Chat() {
 
@@ -13,7 +12,7 @@ function Chat() {
 
   if(chatUser.id){
     return (
-      <ChatStl className='Chat'>
+      <ChatStl>
         <Header />
         <Body />
         <Footer />

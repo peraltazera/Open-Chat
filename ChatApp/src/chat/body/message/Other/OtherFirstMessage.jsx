@@ -1,5 +1,4 @@
-// import './FirstMessage.css'
-import {FirstStl, ContainerMessageStl, ContainerMessageTextStl, MessageStl, ImageStl, InfoStl, DateStl} from './OtherFirstMessage.style';
+import {FirstStl, ContainerMessageStl, ContainerMessageTextStl, MessageStl, ImageStl, InfoStl, DateStl} from './OtherFirstMessage.style'
 
 function OtherFirstMessage(props) {
     return (
@@ -8,7 +7,6 @@ function OtherFirstMessage(props) {
             <ContainerMessageStl>
                 <InfoStl>
                     <p>{props.name}</p>
-                    {/* <p className="Date">{`${props.date.toDate().getUTCHours()}:${props.date.toDate().getUTCMinutes()}`}</p> */}
                 </InfoStl>
                 <ContainerMessageTextStl>
                     <DateStl>{props.formatHours(props.date)}</DateStl>

@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
 import Card from './CardChat'
-import Context from '../../contexts/Context';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
-import { query, collection, where, getDocs } from "firebase/firestore";
-import { db } from "../../../services/FireBaseConfigKey";
-import { BiSearch } from 'react-icons/bi';
-import Settings  from './Settings';
-import Language from '../../Language';
+import Context from '../../contexts/Context'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
+import { query, collection, where, getDocs } from "firebase/firestore"
+import { db } from "../../../services/FireBaseConfigKey"
+import { BiSearch } from 'react-icons/bi'
+import Settings  from './Settings'
+import Language from '../../Language'
 import {BodyStl, SpanIconStl, InputStl, InputContainerStl, NotFoundStl, BodySettingsStl} from './Body.style'
 
 function Body() {
@@ -15,8 +15,8 @@ function Body() {
   const [emailList, setEmailList] = useState([])
   const { searchUser, myUser, setChats, chatUser, settings, inputSearchUser, setInputSearchUser, setSearchUser, language } = useContext(Context)
 
-  const chatsQuery = query(collection(db, "Chats"), where("user", "array-contains", myUser.email || ""));
-  const userQuery = query(collection(db, "users"));
+  const chatsQuery = query(collection(db, "Chats"), where("user", "array-contains", myUser.email || ""))
+  const userQuery = query(collection(db, "users"))
 
   const [chatsDoc] = useCollectionData(chatsQuery)
 
@@ -33,7 +33,7 @@ function Body() {
           }
         } )
       }
-    });
+    })
     setUserList(chatList.sort((x, y) => x.message.messageDate - y.message.messageDate).reverse())
   }
 
@@ -47,7 +47,7 @@ function Body() {
         if(message.length > 1){
           message.pop()
         }
-        message[message.length -1] = message[message.length -1].replace(/[^a-zA-Z0-9]/g, "");
+        message[message.length -1] = message[message.length -1].replace(/[^a-zA-Z0-9]/g, "")
         message = message.join(" ")
         message = message + "..."
       }
@@ -91,17 +91,17 @@ function Body() {
           return {email: otherEmail[0], id: chat.id, message: chat.message, otherNumber: chat[otherEmail[0].replace(/[^a-zA-Z0-9]/g, "")], myNumber: chat[myEmail[0].replace(/[^a-zA-Z0-9]/g, "")] }
         }))
     }
-  }, [chatsDoc]);
+  }, [chatsDoc])
 
   useEffect(() => {
     fetchData()
-  }, [emailList]);
+  }, [emailList])
 
   const validate = (email) => {
-    let res;
-    let re = /\S+@\S+\.\S+/;
+    let res
+    let re = /\S+@\S+\.\S+/
     res = re.test(email)
-    return re.test(email);
+    return re.test(email)
   }
 
   useEffect(() => {
@@ -124,7 +124,7 @@ function Body() {
     }
     else if(validate(inputSearchUser))
     {
-      const q = query(collection(db, "users"), where("email", "==", inputSearchUser));
+      const q = query(collection(db, "users"), where("email", "==", inputSearchUser))
       const fetchData = async () => {
         const test = await getDocs(q)
         setSearchUser("")
@@ -132,14 +132,14 @@ function Body() {
           if(doc){
             setSearchUser(doc.data())
           }
-        });
+        })
       }
       fetchData()
     }
     else{
       setSearchUser("")
     }
-  }, [inputSearchUser]);
+  }, [inputSearchUser])
 
   if(settings)
   {
@@ -201,58 +201,15 @@ function Body() {
             <InputStl type="search" placeholder={Language[language].aside.body.input} value={inputSearchUser} onChange={(e) => setInputSearchUser(e.target.value)}/>
           </InputContainerStl>
           <BodyStl>
-              
               {userList.map((user, id) => {
-                let select = ""
+                let select = false
                 if(user.id == chatUser.id){
-                  select = "Select"
+                  select = true
                 }
                 return <Card key={id} otherNumber={user.otherNumber} myNumber={user.myNumber} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message, 16)} 
                 date={formatDate(user.message.messageDate)} 
                 email={user.data.email} idChat={user.id} select={select}/>
               } )}
-
-
-
-              {userList.map((user, id) => {
-                let select = ""
-                if(user.id == chatUser.id){
-                  select = "Select"
-                }
-                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
-                date={formatDate(user.message.messageDate)} 
-                email={user.data.email} idChat={user.id} select={select}/>
-              } )}
-              {userList.map((user, id) => {
-                let select = ""
-                if(user.id == chatUser.id){
-                  select = "Select"
-                }
-                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
-                date={formatDate(user.message.messageDate)} 
-                email={user.data.email} idChat={user.id} select={select}/>
-              } )}
-                {userList.map((user, id) => {
-                let select = ""
-                if(user.id == chatUser.id){
-                  select = "Select"
-                }
-                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
-                date={formatDate(user.message.messageDate)} 
-                email={user.data.email} idChat={user.id} select={select}/>
-              } )}
-                {userList.map((user, id) => {
-                let select = ""
-                if(user.id == chatUser.id){
-                  select = "Select"
-                }
-                return <Card key={id} num={0} name={user.data.name} photo={user.data.photo} status={previewMessage(user.message.message)} 
-                date={formatDate(user.message.messageDate)} 
-                email={user.data.email} idChat={user.id} select={select}/>
-              } )}
-
-
-
           </BodyStl>
         </>
     )

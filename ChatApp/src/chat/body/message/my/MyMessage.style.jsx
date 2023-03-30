@@ -21,13 +21,15 @@ const ContainerMessageStl = styled.div`
 const MessageStl = styled.div`
     color: ${(props) => props.theme.colors.chat.body.myMessage.message};
     padding: 12px 24px;
-    width:fit-content;
-    max-width: 100%;
+    width: fit-content;
+    max-width: 800px;
     border-radius: 12px 12px 12px 12px;
     font-size: 14px;
     font-weight: 400;
     background-color: ${(props) => props.theme.colors.chat.body.myMessage.background};
     margin: 0px 10px 0px 0px;
+    white-space: pre-line;
+    word-wrap: break-word;
 `;
 
 const DateStl = styled.p`
