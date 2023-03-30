@@ -22,7 +22,7 @@ const MessageStl = styled.div`
     color: ${(props) => props.theme.colors.chat.body.otherMessage.message};
     padding: 12px 24px;
     width: fit-content;
-    max-width: 20px;
+    max-width: 800px;
     border-radius: 12px 12px 12px 12px;
     font-size: 14px;
     font-weight: 400;
