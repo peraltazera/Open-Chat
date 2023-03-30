@@ -25,7 +25,7 @@ function App() {
     const [messages, setMessages] = useState([])
     const [inputSearchUser, setInputSearchUser] = useState("")
     const [settings, setSettings] = useState(false)
-    const [language, setLanguage] = useState("english")
+    const [language, setLanguage] = useState(localStorage.getItem("language") ? localStorage.getItem("language") : "english")
     const [title, setTitle] = useState(Language[language].aside.header.titleChat)
     const [limitMessages, setlimitMessages] = useState(100)
     const [changeLimitMessages, setChangeLimitMessages] = useState(false)

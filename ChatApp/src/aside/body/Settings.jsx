@@ -20,6 +20,7 @@ function Settings() {
   }
 
   const changeLanguage = (e) => {
+    localStorage.setItem("language", e.target.value);
     setLanguage(e.target.value)
     setTitle(Language[e.target.value].aside.header.titleSetings)
   }
