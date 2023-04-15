@@ -5,4 +5,4 @@ O Open Chat é uma plataforma aberta que permite que você se conecte com qualqu
 
 Web  |  Javascript  |  HTML  |  CSS  |  React  |  Next.js
 
-Link: https://open-chat-victorpereira.vercel.app/
+Link: https://openchat-victorpereira.vercel.app/
